@@ -44,7 +44,6 @@
             android:layout_height="44.0dip"
             android:background="#00ffffff"
             android:gravity="center_vertical"
-            android:inputType="textPassword"
             android:maxLength="16"
             android:maxLines="1"
             android:textColor="#ff1d1d1d"
@@ -69,7 +68,6 @@
             android:maxLength="16"
             android:maxLines="1"
             android:textColor="#ff1d1d1d"
-
             android:textSize="16.0sp"
             android:hint="请设置您的密码"
             />

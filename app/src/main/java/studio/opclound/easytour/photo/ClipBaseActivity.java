@@ -271,7 +271,7 @@ public abstract class ClipBaseActivity extends CheckPermissionsActivity {
                 setImg(BitmapUtil.getBitmapFormPath(this, temppath), temppath);
                 //删除旧文件
                 File file = new File(mPath);
-                file.delete();
+//                file.delete();
                 mPath = temppath;
                 break;
             case PHOTOCOMPLETEBYGALLERY:

@@ -1,17 +1,18 @@
-
 package studio.opclound.easytour.internet.translations;
 
-public class SignUp_Trainslation {
+import studio.opclound.easytour.internet.datas.SignInData;
+
+public class SignIn_Trainslation {
     private int code;
     private String message;
-    private String data;
+    private SignInData data;
     public void setCode(int code){this.code = code;}
     public void setMessage(String message){this.message = message;}
-    public void setData(String data){this.data = data;}
+    public void setData(SignInData data){this.data = data;}
 
     public int getCode() {
         return code;
     }
     public String getMessage(){return message;}
-    public String getData(){return data;}
+    public SignInData getData(){return data;}
 }
