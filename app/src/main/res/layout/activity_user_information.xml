@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="studio.opencloud.easytour21.users.UserInformation"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+        <LinearLayout
+            android:id="@+id/ll_user_information_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_change_information_head_icon"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/default_ic">
+
+                </ImageView>
+
+
+                    <EditText
+                        android:id="@+id/et_change_information_user_name"
+                        android:layout_width="200sp"
+                        android:layout_height="wrap_content"
+                        android:hint="用户名："/>
+
+                    <EditText
+                        android:id="@+id/et_change_information_sex"
+                        android:layout_width="200sp"
+                        android:layout_height="wrap_content"
+                        android:hint="性别："/>
+
+                    <EditText
+                        android:id="@+id/et_change_information_description"
+                        android:layout_width="200sp"
+                        android:layout_height="wrap_content"
+                        android:singleLine="false"
+                        android:scrollbars="vertical"
+                        android:hint="个人简介："/>
+
+                    <EditText
+                        android:id="@+id/et_change_information_phone"
+                        android:layout_width="200sp"
+                        android:layout_height="wrap_content"
+                        android:singleLine="false"
+                        android:scrollbars="vertical"
+                        android:hint="用户手机："/>
+
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/gray"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"/>
+                <TextView
+                    android:id="@+id/tv_change_information_change_pass_word"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="修改登陆密码"
+                    android:textSize="25sp"/>
+            <TextView
+                android:id="@+id/tv_change_information_to_be_guide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="注册导游"
+                android:textSize="25sp"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

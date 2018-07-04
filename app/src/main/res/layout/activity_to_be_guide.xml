@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="studio.opencloud.easytour21.users.ToBeGuide"
+    android:orientation="vertical">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_to_be_guide_realname"
+        android:textSize="25sp"
+        android:hint="真实姓名"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_to_be_guide_ID"
+        android:textSize="25sp"
+        android:hint="身份证号"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_to_be_guide_guideID"
+        android:textSize="25sp"
+        android:hint="导游证号"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_to_be_guide_servercity"
+        android:textSize="25sp"
+        android:hint="服务城市"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_to_be_guide_signup"
+        android:textSize="25sp"
+        android:text="注册"/>
+
+</LinearLayout>
