@@ -1,4 +1,4 @@
-package com.example.xh.login;
+package studio.opencloud.easytour21.View;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -16,7 +16,9 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class GuideMainRefreshableView extends LinearLayout implements View.OnTouchListener {
+import studio.opclound.easytour.R;
+
+public class RefreshableView  extends LinearLayout implements View.OnTouchListener {
     /**
      * 下拉状态
      */
@@ -90,7 +92,7 @@ public class GuideMainRefreshableView extends LinearLayout implements View.OnTou
     /**
      * 需要去下拉刷新的ListView
      */
-    public ListView listView;
+    private ListView listView;
 
     /**
      * 刷新时显示的进度条
@@ -169,11 +171,8 @@ public class GuideMainRefreshableView extends LinearLayout implements View.OnTou
      * @param context
      * @param attrs
      */
-    public GuideMainRefreshableView(Context context, AttributeSet attrs) {
+    public RefreshableView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        /**
-         * 初始化设定下拉布局
-         * */
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
         header = LayoutInflater.from(context).inflate(R.layout.pull_to_refresh, null, true);
         progressBar = (ProgressBar) header.findViewById(R.id.progress_bar);
@@ -196,8 +195,8 @@ public class GuideMainRefreshableView extends LinearLayout implements View.OnTou
             hideHeaderHeight = -header.getHeight();
             headerLayoutParams = (MarginLayoutParams) header.getLayoutParams();
             headerLayoutParams.topMargin = hideHeaderHeight;
-//            listView = (ListView) getChildAt(1);
-           // listView.setOnTouchListener(this);
+            listView = (ListView) getChildAt(1);
+            listView.setOnTouchListener(this);
             loadOnce = true;
         }
     }
@@ -460,6 +459,7 @@ public class GuideMainRefreshableView extends LinearLayout implements View.OnTou
             headerLayoutParams.topMargin = topMargin[0];
             header.setLayoutParams(headerLayoutParams);
         }
+
         @Override
         protected void onPostExecute(Integer topMargin) {
             headerLayoutParams.topMargin = topMargin;
@@ -495,4 +495,5 @@ public class GuideMainRefreshableView extends LinearLayout implements View.OnTou
         void onRefresh();
 
     }
+
 }

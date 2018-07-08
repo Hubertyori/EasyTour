@@ -1,4 +1,4 @@
-package com.example.xh.login;
+package studio.opencloud.easytour21.orders;
 
 /**
  * Created by Administrator on 2018/3/24.
@@ -24,7 +24,13 @@ public class SelfOrder {
         this.mDate = date;
         this.mDays = days;
     }
-
+    public SelfOrder(int picture, String place, String describle, String date, int numOFPeople){
+        this.mImage = picture;
+        this.mPlace = place;
+        this.mPlaceDescrible = describle;
+        this.mDate = date;
+        this.numOFPeople = numOFPeople;
+    }
     public SelfOrder(int mImage, String mPlace, String mPlaceDescrible, String mDate, String mDays, int mOrderID) {
         this.mImage = mImage;
         this.mPlace = mPlace;

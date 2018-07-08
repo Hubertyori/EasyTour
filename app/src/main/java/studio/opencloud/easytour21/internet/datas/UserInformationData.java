@@ -11,13 +11,13 @@ public class UserInformationData implements Parcelable {
     private String introduce;
     private String isguide;
     private int guideid;
-    private int star;
+    private float star;
     private String password;
     private String guiderealname;
     private String guideIDnumbr;
     private String guideNumber;
     private String guideservercity;
-    private String guidestar;
+    private float guidestar;
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
@@ -47,7 +47,7 @@ public class UserInformationData implements Parcelable {
         this.guideid = guideid;
     }
 
-    public void setStar(int star) {
+    public void setStar(float star) {
         this.star = star;
     }
 
@@ -71,7 +71,7 @@ public class UserInformationData implements Parcelable {
         this.guideservercity = guideservercity;
     }
 
-    public void setGuidestar(String guidestar) {
+    public void setGuidestar(float guidestar) {
         this.guidestar = guidestar;
     }
 
@@ -103,7 +103,7 @@ public class UserInformationData implements Parcelable {
         return guideid;
     }
 
-    public int getStar() {
+    public float getStar() {
         return star;
     }
 
@@ -127,7 +127,7 @@ public class UserInformationData implements Parcelable {
         return guideservercity;
     }
 
-    public String getGuidestar() {
+    public float getGuidestar() {
         return guidestar;
     }
 
@@ -145,13 +145,13 @@ public class UserInformationData implements Parcelable {
         parcel.writeString(introduce);
         parcel.writeString(isguide);
         parcel.writeInt(guideid);
-        parcel.writeInt(star);
+        parcel.writeFloat(star);
         parcel.writeString(password);
         parcel.writeString(guiderealname);
         parcel.writeString(guideIDnumbr);
         parcel.writeString(guideNumber);
         parcel.writeString(guideservercity);
-        parcel.writeString(guidestar);
+        parcel.writeFloat(guidestar);
     }
 
     public static final Parcelable.Creator<UserInformationData> CREATOR = new Parcelable.Creator<UserInformationData>() {
@@ -167,13 +167,13 @@ public class UserInformationData implements Parcelable {
             userInformationData.introduce= source.readString();
             userInformationData.isguide= source.readString();
             userInformationData.guideid= source.readInt();
-            userInformationData.star= source.readInt();
+            userInformationData.star= source.readFloat();
             userInformationData.password= source.readString();
             userInformationData.guiderealname= source.readString();
             userInformationData.guideIDnumbr= source.readString();
             userInformationData.guideNumber= source.readString();
             userInformationData.guideservercity= source.readString();
-            userInformationData.guidestar= source.readString();
+            userInformationData.guidestar= source.readFloat();
 
             return userInformationData;
         }

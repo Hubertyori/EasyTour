@@ -13,9 +13,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/timg"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/timg"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="studio.opencloud.easytour21.mainspace.MainActivity" />
@@ -50,8 +50,17 @@
         <activity android:name="studio.opencloud.easytour21.chat.ChatWindow" />
         <activity android:name="studio.opencloud.easytour21.blogs.SendBlog" />
         <activity android:name="studio.opencloud.easytour21.blogs.ReadBlog" />
-        <activity android:name="studio.opencloud.easytour21.orders.OrderList"></activity>
-        <activity android:name="studio.opencloud.easytour21.users.UserInformation"></activity>
+        <activity android:name="studio.opencloud.easytour21.orders.OrderList" />
+        <activity android:name="studio.opencloud.easytour21.users.UserInformation" />
+        <activity android:name="studio.opencloud.easytour21.users.ChangePassWord" />
+        <activity android:name="studio.opencloud.easytour21.orders.UserIdleOrder" />
+        <activity android:name="studio.opencloud.easytour21.orders.UserAcceptedOrder" />
+        <activity android:name="studio.opencloud.easytour21.orders.UserBeginOrder" />
+        <activity android:name="studio.opencloud.easytour21.orders.UserFinishedOrder" />
+        <activity android:name="studio.opencloud.easytour21.orders.GuideIdleOrder" />
+        <activity android:name="studio.opencloud.easytour21.orders.GuideAcceptedOrder" />
+        <activity android:name="studio.opencloud.easytour21.orders.GuideBeginOrder" />
+        <activity android:name="studio.opencloud.easytour21.orders.GuideFinishedOrder"></activity>
     </application>
 
 </manifest>

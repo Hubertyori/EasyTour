@@ -31,13 +31,15 @@ public class ChangePassWord extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_information);
+        setContentView(R.layout.activity_change_pass_word);
         init();
     }
 
     private void init() {
+        etPassWord = findViewById(R.id.et_new_pass_word);
+        etConfirmPassWord = findViewById(R.id.et_confirm_pass_word);
         btnSignUp = findViewById(R.id.btn_change_pass_word);
-
+        btnSignUp.setOnClickListener(MyListener);
     }
     private View.OnClickListener MyListener = new View.OnClickListener() {
         @Override
@@ -60,7 +62,7 @@ public class ChangePassWord extends Activity {
     private void resetPassWord() {
         collentInfo();
         request();
-        intent = new Intent(ChangePassWord.this, MainActivity.class);
+        intent = new Intent(ChangePassWord.this, Login.class);
         startActivity(intent);
         ChangePassWord.this.finish();
     }
@@ -68,7 +70,7 @@ public class ChangePassWord extends Activity {
     private void request() {
         //步骤4:创建Retrofit对象
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://118.89.18.136/YiYou/YiYouImg/") // 设置 网络请求 Url
+                .baseUrl("http://118.89.18.136/YiYou/") // 设置 网络请求 Url
                 .addConverterFactory(GsonConverterFactory.create()) //设置使用Gson解析(记得加入依赖)
                 .build();
 
@@ -84,7 +86,7 @@ public class ChangePassWord extends Activity {
                 @Override
                 public void onResponse(Call<ResetPassWord_Translation> call, Response<ResetPassWord_Translation> response) {
                     // 步骤7：处理返回的数据结果：输出翻译的内容
-                    Toast.makeText(ChangePassWord.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChangePassWord.this, "重置成功", Toast.LENGTH_SHORT).show();
                     System.out.println(response.body().getMessage());
 
                 }
@@ -116,7 +118,7 @@ public class ChangePassWord extends Activity {
     private boolean confirm() {
         passWord = etPassWord.getText().toString();
         confirmPassWord = etConfirmPassWord.getText().toString();
-        if (passWord == confirmPassWord){
+        if (passWord.equals(confirmPassWord)){
             return true;
         }
         else

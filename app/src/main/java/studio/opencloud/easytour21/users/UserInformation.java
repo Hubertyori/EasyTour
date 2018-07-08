@@ -137,7 +137,7 @@ public class UserInformation extends ClipBaseActivity {
             etSex.setText(userInformation.getSex());
             etDescription.setText(userInformation.getIntroduce());
             etUserName.setText(userInformation.getNickname());
-            etGuidestar.setText(userInformation.getGuidestar());
+            etGuidestar.setText(""+userInformation.getGuidestar());
             etGuidestar.setEnabled(Boolean.FALSE);
             etGuideID.setText("" + userInformation.getGuideid());
             etGuideID.setEnabled(Boolean.FALSE);
@@ -170,6 +170,12 @@ public class UserInformation extends ClipBaseActivity {
             ll.removeAllViews();
             linearLayout.addView(btnUpdate);
             btnUpdate.setOnClickListener(MyListener);
+            //加载网络图片
+            Picasso.with(UserInformation.this)
+                    .load(userInformation.getHeadphoto())
+                    .placeholder(R.drawable.default_ic)
+                    .error(R.drawable.error)
+                    .into(ivHeadIc);
         }
     }
 
@@ -182,7 +188,7 @@ public class UserInformation extends ClipBaseActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.et_guide_information_real_name:
+                case R.id.btn_change_information_update:
                     update();
                     break;
                 case R.id.tv_change_information_to_be_guide:

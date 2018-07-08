@@ -14,7 +14,7 @@ import studio.opencloud.easytour21.internet.interfaces.UpdateUI_Interface;
 import studio.opencloud.easytour21.internet.translations.Guide_Order_Translation;
 import studio.opencloud.easytour21.internet.translations.User_Order_Translation;
 
-public class MyOrder {
+public class Order {
     private static final int IDLE = 0;
     private static final int ACCEPTED = 1;
     private static final int BEGIN = 2;
@@ -30,7 +30,7 @@ public class MyOrder {
     private List<GuideOrderData> guide_order_data;
     private  UpdateUI_Interface updateUI_interface;
 
-    MyOrder(int charactor, String phone, UpdateUI_Interface updateUI_interface ) {
+    Order(int charactor, String phone, UpdateUI_Interface updateUI_interface ) {
         this.updateUI_interface = updateUI_interface;
         this.charactor = charactor;
         if (charactor == USER) {
@@ -290,9 +290,7 @@ public class MyOrder {
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                  System.out.println("********************************************************");
                                  user_order_data = response.body().getData();
-                                 for (int i = 0; i < user_order_data.size(); i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。
-                                        updateUI_interface.updateUserOrderUI(user_order_data.get(i));
-                                 }
+                                 updateUI_interface.updateIdleUserOrderUI(user_order_data);
                              }
                              //lost river
 
@@ -325,9 +323,7 @@ public class MyOrder {
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                  System.out.println("********************************************************");
                                  guide_order_data = response.body().getData();
-                                 for (int i = 0; i < guide_order_data.size(); i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。
-                                     updateUI_interface.updateGuideOrderUI(guide_order_data.get(i));
-                                 }
+                                 updateUI_interface.updateIdleGuideOrderUI(guide_order_data);
                              }
 
                              //请求失败时回调

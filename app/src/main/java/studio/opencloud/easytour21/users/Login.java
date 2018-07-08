@@ -42,6 +42,9 @@ public class Login extends Activity {
     private Intent intent;
     private UserInformationData userData;
 
+    private static final int SIGNUP = 0;
+    private static final int RESETPWD = 1;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,32 +71,35 @@ public class Login extends Activity {
                     login();
                     break;
                 case R.id.tv_login_reset_key_word:
-                    vertifacation();
+                    vertifacation(RESETPWD);
                     break;
                 case R.id.tv_login_sign_up:
-                    vertifacation();
+                    vertifacation(SIGNUP);
                     break;
             }
         }
     };
 
-    private void vertifacation() {
+    private void vertifacation(int status) {
         intent = new Intent(Login.this, Verification.class);
+        intent.putExtra("status",status);
         startActivity(intent);
     }
+
     //点击后退按钮
     @Override
     public void onBackPressed() {
         showExitDialog();
     }
+
     /*
      * 点击后退提示是否退出窗口
      * */
-    private void showExitDialog(){
+    private void showExitDialog() {
         new AlertDialog.Builder(this)
                 .setTitle("Promoting")
                 .setMessage("Are you sure to exit")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Login.this.finish();
@@ -102,6 +108,7 @@ public class Login extends Activity {
                 .setNegativeButton("No", null)
                 .show();
     }
+
     private void login() {
         //步骤4:创建Retrofit对象
         Retrofit retrofit = new Retrofit.Builder()
@@ -112,58 +119,42 @@ public class Login extends Activity {
         Login_Interface request = retrofit.create(Login_Interface.class);
 
         //对 发送请求 进行封装(设置需要翻译的内容)
-            collectInfo();
-            Call<Login_Translation> call = request.signInInformation(userName,keyWord);
+        collectInfo();
+        System.out.println("*******************************************************");
+        System.out.println(userName);
+        System.out.println(keyWord);
+        Call<Login_Translation> call = request.signInInformation(userName, keyWord);
 
-            //步骤6:发送网络请求(异步)
-            call.enqueue(new Callback<Login_Translation>() {
-                //请求成功时回调
-                @Override
-                public void onResponse(Call<Login_Translation> call, Response<Login_Translation> response) {
-                    // 步骤7：处理返回的数据结果：输出翻译的内容
-                    Toast.makeText(Login.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    System.out.println("********************************************************");
-                    System.out.println(response.body().getData().getNickname());
-                    if(response.body().getCode()==1){
-                        userData = response.body().getData();
-                        intent = new Intent(Login.this, UserInformation.class);
-                        intent.putExtra("userData",userData);
+        //步骤6:发送网络请求(异步)
+        call.enqueue(new Callback<Login_Translation>() {
+            //请求成功时回调
+            @Override
+            public void onResponse(Call<Login_Translation> call, Response<Login_Translation> response) {
+                // 步骤7：处理返回的数据结果：输出翻译的内容
+                Toast.makeText(Login.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                System.out.println("********************************************************");
+                System.out.println(response.body().getData().getNickname());
+                if (response.body().getCode() == 1) {
+                    userData = response.body().getData();
+                    intent = new Intent(Login.this, MainActivity.class);
+                    intent.putExtra("userData", userData);
 //                        userDataDiliver();
-                        startActivity(intent);
-                        Login.this.finish();
-                    }
+                    startActivity(intent);
+                    Login.this.finish();
                 }
+            }
 
-                //请求失败时回调
-                @Override
-                public void onFailure(Call<Login_Translation> call, Throwable throwable) {
-                    System.out.println("请求失败");
-                    System.out.println(throwable.getMessage());
-                    Toast.makeText(Login.this, "请求失败", Toast.LENGTH_SHORT).show();
-                }
-            });
+            //请求失败时回调
+            @Override
+            public void onFailure(Call<Login_Translation> call, Throwable throwable) {
+                System.out.println("请求失败*****************************************");
+                System.out.println(throwable.getMessage());
+                Toast.makeText(Login.this, "请求失败", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
-}
-    //传递用户信息函数
-    //输入用户信息
-    //弃用，改用对象传输
-//    private void userDataDiliver() {
-//        intent.putExtra("Guideid",userData.getGuideid());
-//        intent.putExtra("GuideIDnumbr",userData.getGuideIDnumbr());
-//        intent.putExtra("GuideNumber",userData.getGuideNumber());
-//        intent.putExtra("Guiderealname",userData.getGuiderealname());
-//        intent.putExtra("Guideservercity",userData.getGuideservercity());
-//        intent.putExtra("Guidestar",userData.getGuidestar());
-//        intent.putExtra("Headphoto",userData.getHeadphoto());
-//        intent.putExtra("Introduce",userData.getIntroduce());
-//        intent.putExtra("Isguide",userData.getIsguide());
-//        intent.putExtra("Nickname",userData.getNickname());
-//        intent.putExtra("Password",userData.getPassword());
-//        intent.putExtra("Sex",userData.getSex());
-//        intent.putExtra("Star",userData.getStar());
-//        intent.putExtra("Telephone",userData.getTelephone());
-//    }
+    }
 
     private void collectInfo() {
         userName = etUserName.getText().toString();

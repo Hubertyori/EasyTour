@@ -1,4 +1,4 @@
-package com.example.xh.login;
+package studio.opencloud.easytour21.orders;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,9 +12,14 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import studio.opclound.easytour.R;
+import studio.opencloud.easytour21.View.RefreshableView;
+import studio.opencloud.easytour21.adapters.QueryArrayAdapter;
+
 public class OrderActivity extends AppCompatActivity {
     private Button btn_i,btn_a,btn_b,btn_f;
-    private GuideMainRefreshableView guideMainRefreshableView;
+    private RefreshableView guideMainRefreshableView;
+    private ListView listView;
     private ListView order_list;
     private List<Integer> idleorder;
     private static final int IDLE = 0x1111;
@@ -40,9 +45,9 @@ public class OrderActivity extends AppCompatActivity {
         btn_f=findViewById(R.id.btn_f);
         order_list=findViewById(R.id.tourist_query_orders_listview);
 
-        guideMainRefreshableView = (GuideMainRefreshableView) findViewById(R.id.tourist_query_rv);
-        guideMainRefreshableView.listView = (ListView) findViewById(R.id.tourist_query_orders_listview);
-        guideMainRefreshableView.setOnRefreshListener(new GuideMainRefreshableView.PullToRefreshListener() {
+        guideMainRefreshableView = (RefreshableView) findViewById(R.id.tourist_query_rv);
+        listView = (ListView) findViewById(R.id.tourist_query_orders_listview);
+        guideMainRefreshableView.setOnRefreshListener(new RefreshableView.PullToRefreshListener() {
             @Override
             public void onRefresh() {
                 try {
@@ -124,70 +129,50 @@ public class OrderActivity extends AppCompatActivity {
         order_list.setAdapter(adapter);
     }
 
-    public void cheack_idle(View view){
-        Intent intent =new Intent(OrderActivity.this,activity_check_order.class);
-                       //启动
-        startActivity(intent);
-
-
-    }
-    public void choose_guide(View view)
-    {
-        Intent intent =new Intent(OrderActivity.this,EuclidActivity_i.class);
-        //启动
-        startActivity(intent);
-
-    }
-    public void finish_order(View view)
-    {
-        Intent intent =new Intent(OrderActivity.this,EvaluateActivity.class);
-        //启动
-        startActivity(intent);
-
-    }
 
 
 
 
 
-    private List<Order> getDataIdle() {
+
+    private List<SelfOrder> getDataIdle() {
         // TODO Auto-generated method stub
-        List<Order> list= new ArrayList<Order>();
+        List<SelfOrder> list= new ArrayList<SelfOrder>();
 
-        list.add(new Order(R.drawable.logotemp,"成都市","haha","2018/8/20","3"));
-        list.add(new Order(R.drawable.logotemp,"重庆市","haha","2018/8/20","3"));
-        list.add(new Order(R.drawable.logotemp,"成都市","haha","2018/8/20","3"));
-        list.add(new Order(R.drawable.logotemp,"重庆市","haha","2018/8/20","3"));
-        list.add(new Order(R.drawable.logotemp,"成都市","haha","2018/8/20","3"));
-        list.add(new Order(R.drawable.logotemp,"重庆市","haha","2018/8/20","3"));
+        list.add(new SelfOrder(R.drawable.logotemp,"成都市","haha","2018/8/20","3"));
+        list.add(new SelfOrder(R.drawable.logotemp,"重庆市","haha","2018/8/20","3"));
+        list.add(new SelfOrder(R.drawable.logotemp,"成都市","haha","2018/8/20","3"));
+        list.add(new SelfOrder(R.drawable.logotemp,"重庆市","haha","2018/8/20","3"));
+        list.add(new SelfOrder(R.drawable.logotemp,"成都市","haha","2018/8/20","3"));
+        list.add(new SelfOrder(R.drawable.logotemp,"重庆市","haha","2018/8/20","3"));
 
 
         return list;
     }
-    private List<Order> getDataAccept() {
+    private List<SelfOrder> getDataAccept() {
         // TODO Auto-generated method stub
-        List<Order> list= new ArrayList<Order>();
+        List<SelfOrder> list= new ArrayList<SelfOrder>();
 
-        list.add(new Order(R.drawable.logotemp,"长安市","haha","2018/8/20","3"));
-        list.add(new Order(R.drawable.logotemp,"南昌市","haha","2018/8/20","3"));
+        list.add(new SelfOrder(R.drawable.logotemp,"长安市","haha","2018/8/20","3"));
+        list.add(new SelfOrder(R.drawable.logotemp,"南昌市","haha","2018/8/20","3"));
 
         return list;
     }
-    private List<Order> getDataBegin() {
+    private List<SelfOrder> getDataBegin() {
         // TODO Auto-generated method stub
-        List<Order> list= new ArrayList<Order>();
+        List<SelfOrder> list= new ArrayList<SelfOrder>();
 
-        list.add(new Order(R.drawable.logotemp,"北京市","haha","2018/8/20","3"));
-        list.add(new Order(R.drawable.logotemp,"香港市","haha","2018/8/20","3"));
+        list.add(new SelfOrder(R.drawable.logotemp,"北京市","haha","2018/8/20","3"));
+        list.add(new SelfOrder(R.drawable.logotemp,"香港市","haha","2018/8/20","3"));
 
         return list;
     }
-    private List<Order> getDataFinished() {
+    private List<SelfOrder> getDataFinished() {
         // TODO Auto-generated method stub
-        List<Order> list= new ArrayList<Order>();
+        List<SelfOrder> list= new ArrayList<SelfOrder>();
 
-        list.add(new Order(R.drawable.logotemp,"长安市","haha","2018/8/20","3"));
-        list.add(new Order(R.drawable.logotemp,"南昌市","haha","2018/8/20","3"));
+        list.add(new SelfOrder(R.drawable.logotemp,"长安市","haha","2018/8/20","3"));
+        list.add(new SelfOrder(R.drawable.logotemp,"南昌市","haha","2018/8/20","3"));
 
         return list;
     }

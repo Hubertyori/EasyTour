@@ -12,6 +12,6 @@ public interface SendOrder_Interface {
     Call<Register_Translation> signUpInformation(@Field("tel") String tel,
                                                  @Field("place") String place,
                                                  @Field("date") String date,
-                                                 @Field("numberOfPeople") String numberOfPeople,
+                                                 @Field("numberOfPeople") int numberOfPeople,
                                                  @Field("description") String description);
 }

@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SendOrder">
+    tools:context="studio.opencloud.easytour21.orders.SendOrder"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <EditText
+        android:id="@+id/et_send_order_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="目的地：" />
+
+    <EditText
+        android:id="@+id/et_send_order_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="日期：" />
+
+    <EditText
+        android:id="@+id/et_send_order_people_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="同行人数：" />
+
+    <EditText
+        android:id="@+id/et_send_order_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="备注：" />
+    <Button
+        android:id="@+id/btn_send_order_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发布订单"/>
+
+</LinearLayout>

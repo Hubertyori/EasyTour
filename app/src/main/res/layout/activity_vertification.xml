@@ -61,7 +61,6 @@
                 android:layout_height="50dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginLeft="1dp"
-                android:background="@drawable/vertification_button_selector"
                 android:text="获取验证码"
                 />
 

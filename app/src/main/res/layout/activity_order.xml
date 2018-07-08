@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OrderActivity">
+    tools:context="order">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -63,7 +63,7 @@
                 android:textSize="18sp"
                 android:onClick="finished"/>
         </LinearLayout>
-        <com.example.xh.login.GuideMainRefreshableView
+        <studio.opencloud.easytour21.View.GuideMainRefreshableView
         android:id="@+id/tourist_query_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -75,7 +75,7 @@
             android:layout_margin="2dp"
             >
         </ListView>
-    </com.example.xh.login.GuideMainRefreshableView>
+    </studio.opencloud.easytour21.View.GuideMainRefreshableView>
 
 
 

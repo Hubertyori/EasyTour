@@ -21,7 +21,7 @@ public class IndustrySMS
 
 	private static String accountSid = Config.ACCOUNT_SID;
 	private static String auth_token = Config.AUTH_TOKEN;
-	private static String to = "15523352924";
+//	private static String to = "15523352924";
 	private static String smsContent = "【易游】尊敬的用户，您的验证码为123456，请于10分钟内正确输入，如非本人操作，请忽略此短信。";
 	private static String templateid = "339517518";
 	private static String timestamp = "";
@@ -29,9 +29,10 @@ public class IndustrySMS
 	
 	/**
 	 * 验证码通知短信
+	 * @param to
 	 */
 	
-	public static String execute()
+	public static String execute(java.lang.String phone)
 	{
 		int num = VerifyingCodeGenerator();
 		String code = Integer.toString(num);
@@ -47,7 +48,7 @@ public class IndustrySMS
 //	      
 	    }
 	    String url = Config.BASE_URL + operation;
-	    String body = "accountSid=" + accountSid + "&to=" + to + "&smsContent=" + smsContent +
+	    String body = "accountSid=" + accountSid + "&to=" + phone + "&smsContent=" + smsContent +
 	    		"&templateid" +templateid
 	        + HttpUtil.createCommonParam();
 //

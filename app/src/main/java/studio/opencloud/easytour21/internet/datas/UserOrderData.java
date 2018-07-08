@@ -2,19 +2,23 @@ package studio.opencloud.easytour21.internet.datas;
 
 public class UserOrderData {
     private int orderID;
-    private String telephone;
     private String status;
     private String place;
     private String date;
+    private int numberOfPeople;
     private String note;
-    private int userNickname;
+    private String userNickname;
+
+    public int getNumberOfPeople() {
+        return numberOfPeople;
+    }
+
+    public void setNumberOfPeople(int numberOfPeople) {
+        this.numberOfPeople = numberOfPeople;
+    }
 
     public void setOrderID(int orderID) {
         this.orderID = orderID;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
     }
 
     public void setStatus(String status) {
@@ -33,16 +37,12 @@ public class UserOrderData {
         this.note = note;
     }
 
-    public void setUserNickname(int userNickname) {
+    public void setUserNickname(String userNickname) {
         this.userNickname = userNickname;
     }
 
     public int getOrderID() {
         return orderID;
-    }
-
-    public String getTelephone() {
-        return telephone;
     }
 
     public String getStatus() {
@@ -61,7 +61,7 @@ public class UserOrderData {
         return note;
     }
 
-    public int getUserNickname() {
+    public String getUserNickname() {
         return userNickname;
     }
 }

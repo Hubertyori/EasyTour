@@ -1,9 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TakeOrder">
+    tools:context="studio.opencloud.easytour21.orders.TakeOrder"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <EditText
+        android:id="@+id/et_take_order_orderID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="订单ID：" />
+    <EditText
+        android:id="@+id/et_take_order_place"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="地点：" />
+    <EditText
+        android:id="@+id/et_take_order_user_nick_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="用户：" />
+    <EditText
+        android:id="@+id/et_take_order_people_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="同行人数：" />
+    <EditText
+        android:id="@+id/et_take_order_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="详细描述：" />
+
+    <Button
+        android:id="@+id/btn_take_orders"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="接受订单" />
+</LinearLayout>

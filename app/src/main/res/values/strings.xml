@@ -4,6 +4,8 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+
+
     <string name="action_settings">Settings</string>
     <string name="become_a_tourist">I want to be a tourist</string>
     <string name="prompt_email">Email</string>
@@ -75,13 +77,13 @@
 
     <string name="order_order_title">Order</string>
     <!--下拉刷新-->
-    <string name="pull_to_refresh">pull to refresh</string>
-    <string name="release_to_refresh">release to refresh</string>
-    <string name="refreshing">refreshing...</string>
-    <string name="not_updated_yet">not updated yet</string>
-    <string name="updated_at">updated_at %1$s</string>
-    <string name="updated_just_now">updated just now</string>
-    <string name="time_error">time error</string>
+    <string name="pull_to_refresh">下拉可以刷新</string>
+    <string name="release_to_refresh">释放立即刷新</string>
+    <string name="refreshing">正在刷新…</string>
+    <string name="not_updated_yet">暂未更新过</string>
+    <string name="updated_at">上次更新于%1$s前</string>
+    <string name="updated_just_now">刚刚更新</string>
+    <string name="time_error">时间有问题</string>
     <string name="tourist_setting">Setting</string>
     <string name="please_click_to_select_the_city">Please click to select the city</string>
     <string name="click_here_to_choose">click here to choose</string>

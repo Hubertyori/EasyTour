@@ -4,7 +4,7 @@ import java.util.List;
 
 import studio.opencloud.easytour21.internet.datas.UserOrderData;
 
-public class Order_Translation {
+public class User_Order_Translation {
     private int code;
     private String message;
     private List<UserOrderData> data;
@@ -25,11 +25,11 @@ public class Order_Translation {
         this.message = message;
     }
 
-    public List<OrderData> getData() {
+    public List<UserOrderData> getData() {
         return data;
     }
 
-    public void setData(List<OrderData> data) {
+    public void setData(List<UserOrderData> data) {
         this.data = data;
     }
 }

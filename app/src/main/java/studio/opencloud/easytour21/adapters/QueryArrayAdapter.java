@@ -1,4 +1,4 @@
-package com.example.xh.login;
+package studio.opencloud.easytour21.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,20 +8,24 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.xh.login.OrderHolder;
 
 import java.util.List;
+
+import studio.opclound.easytour.R;
+import studio.opencloud.easytour21.orders.Order;
+import studio.opencloud.easytour21.orders.OrderHolder;
+import studio.opencloud.easytour21.orders.SelfOrder;
 
 /**
  * Created by Administrator on 2018/3/24.
  */
 
-public class QueryArrayAdapter extends ArrayAdapter<Order> {
-    private List<Order> objects;
+public class QueryArrayAdapter extends ArrayAdapter<SelfOrder> {
+    private List<SelfOrder> objects;
     private Context context;
     private int resource;
 
-    public QueryArrayAdapter(Context context, int resource, List<Order> objects) {
+    public QueryArrayAdapter(Context context, int resource, List<SelfOrder> objects) {
         super(context, resource, objects);
         // TODO Auto-generated constructor stub
         this.objects = objects;
@@ -30,7 +34,7 @@ public class QueryArrayAdapter extends ArrayAdapter<Order> {
     }
 
 
-    public void setObjects(List<Order> objects) {
+    public void setObjects(List<SelfOrder> objects) {
         this.objects = objects;
     }
 
@@ -41,7 +45,7 @@ public class QueryArrayAdapter extends ArrayAdapter<Order> {
     }
 
     @Override
-    public Order getItem(int position) {
+    public SelfOrder getItem(int position) {
         // TODO Auto-generated method stub
         return objects.get(position);
     }
@@ -68,7 +72,7 @@ public class QueryArrayAdapter extends ArrayAdapter<Order> {
             viewHolder = (OrderHolder) convertView.getTag();
         }
 
-        Order order = objects.get(position);
+        SelfOrder order = objects.get(position);
         if (null != order) {
             viewHolder.getImageView().setBackgroundResource(order.getmImage());
             viewHolder.getTitle().setText(order.getmPlace());
