@@ -4,9 +4,22 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import studio.opclound.easytour.R;
+import studio.opencloud.easytour21.internet.datas.GuideOrderData;
+import studio.opencloud.easytour21.internet.datas.UserInformationData;
+import studio.opencloud.easytour21.internet.datas.UserOrderData;
+import studio.opencloud.easytour21.internet.interfaces.TakeOrder_Interface;
+import studio.opencloud.easytour21.internet.translations.Register_Translation;
 
 public class GuideIdleOrder extends AppCompatActivity {
     private EditText mID;
@@ -15,29 +28,37 @@ public class GuideIdleOrder extends AppCompatActivity {
     private EditText mDate;
     private EditText mNum;
     private EditText mRemark;
-    private EditText mTel;
+    private Button btnTakeOrder;
+    private TextView tvWithDraw;
+//    private EditText mTel;
     private String orderID;
     private String orderUsername;
     private String orderDes;
     private String orderDate;
     private String orderNum;
     private String orderRemark;
-    private String orderTel;
+    private Intent intent;
+    private UserInformationData userData;
+//    private String orderTel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guide_idle_order);
-        Intent intent = getIntent();
+        setContentView(R.layout.activity_guide_idel_order);
+        intent = getIntent();
+        userData = intent.getParcelableExtra("userData");//获取用户个人信息
 
-
-        mID=findViewById(R.id.et_order_ID);
-        mUsername=findViewById(R.id.et_guest_name);
-        mDes=findViewById(R.id.et_destination);
-        mDate=findViewById(R.id.et_start_time);
-        mNum=findViewById(R.id.et_order_people);
-        mRemark=findViewById(R.id.et_remark);
-        mTel=findViewById(R.id.et_guest_tel);
+        mID=findViewById(R.id.et_guide_idle_order_ID);
+        mUsername=findViewById(R.id.et_guide_idle_user_name);
+        mDes=findViewById(R.id.et_guide_idle_destination);
+        mDate=findViewById(R.id.et_guide_idle_start_time);
+        mNum=findViewById(R.id.et_guide_idle_people_number);
+        mRemark=findViewById(R.id.et_guide_idle_remark);
+        btnTakeOrder = findViewById(R.id.btn_guide_idle_take_order);
+        btnTakeOrder.setOnClickListener(MyListener);
+        tvWithDraw = findViewById(R.id.tv_guide_idle_order_withdraw);
+        tvWithDraw.setOnClickListener(MyListener);
+//        mTel=findViewById(R.id.et_guide_idle_user_tel);
         InitOrderdata();
         getData();
 
@@ -45,14 +66,16 @@ public class GuideIdleOrder extends AppCompatActivity {
 
     public void InitOrderdata()//读取数据
     {
-        orderID="2000153";
-        orderDate="2018/7/20";
-        orderDes="四川省 成都市 锦江区";
-        orderNum="10";
-        orderRemark="可爱想日";
-        orderTel="15823090781";
+        Intent intent =getIntent();
+        GuideOrderData selectOrder = intent.getParcelableExtra("selectOrder");
+        orderID=String.valueOf(selectOrder.getOrderID());
+        orderDate=selectOrder.getDate();
+        orderNum=String.valueOf(selectOrder.getNumberOfPeople());
+        orderRemark=selectOrder.getNote();
+        orderDes = selectOrder.getPlace();
+//        orderTel="15823090781";
+        orderUsername=selectOrder.getUserNickname();
 
-        orderUsername="杨泽绗";
 
 
     }
@@ -64,7 +87,7 @@ public class GuideIdleOrder extends AppCompatActivity {
         mDes.setText(orderDes);
         mNum.setText(orderNum);
         mRemark.setText(orderRemark);
-        mTel.setText(orderTel);
+//        mTel.setText(orderTel);
         mUsername.setText(orderUsername);
 
     }
@@ -76,10 +99,50 @@ public class GuideIdleOrder extends AppCompatActivity {
         startActivity(intent);
         this.finish();
     }
-    public  void apply_guide()//接单
+    public void apply_guide()//接单
     {
+        //步骤4:创建Retrofit对象
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://118.89.18.136/YiYou/") // 设置 网络请求 Url
+                .addConverterFactory(GsonConverterFactory.create()) //设置使用Gson解析(记得加入依赖)
+                .build();
+        // 步骤5:创建 网络请求接口 的实例
+        TakeOrder_Interface request = retrofit.create(TakeOrder_Interface.class);
 
+        //对 发送请求 进行封装(设置需要翻译的内容)
+        System.out.println("*******************************************************");
+        Call<Register_Translation> call = request.takeOrder(orderID,userData.getGuideIDnumbr());
+
+        //步骤6:发送网络请求(异步)
+        call.enqueue(new Callback<Register_Translation>() {
+            //请求成功时回调
+            @Override
+            public void onResponse(Call<Register_Translation> call, Response<Register_Translation> response) {
+                // 步骤7：处理返回的数据结果：输出翻译的内容
+                Toast.makeText(GuideIdleOrder.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+            }
+            //请求失败时回调
+            @Override
+            public void onFailure(Call<Register_Translation> call, Throwable throwable) {
+                System.out.println("请求失败*****************************************");
+                System.out.println(throwable.getMessage());
+                Toast.makeText(GuideIdleOrder.this, "请求失败", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+    private View.OnClickListener MyListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.btn_guide_idle_take_order:
+                    apply_guide();
+                    break;
+                case R.id.tv_guide_idle_order_withdraw:
+                    finish();
+                    break;
+            }
+        }
+    };
 }
 
 

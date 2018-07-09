@@ -1,6 +1,9 @@
 package studio.opencloud.easytour21.internet.datas;
 
-public class UserOrderData {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class UserOrderData implements Parcelable {
     private int orderID;
     private String status;
     private String place;
@@ -64,4 +67,42 @@ public class UserOrderData {
     public String getUserNickname() {
         return userNickname;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(orderID);
+        parcel.writeString(status);
+        parcel.writeString(place);
+        parcel.writeString(date);
+        parcel.writeInt(numberOfPeople);
+        parcel.writeString(note);
+        parcel.writeString(userNickname);
+    }
+    public static final Parcelable.Creator<UserOrderData> CREATOR = new Parcelable.Creator<UserOrderData>() {
+
+        @Override
+        public UserOrderData createFromParcel(Parcel source) {
+            // TODO Auto-generated method stub
+            UserOrderData userOrderData = new UserOrderData();
+            userOrderData.orderID = source.readInt();
+            userOrderData.status= source.readString();
+            userOrderData.place = source.readString();
+            userOrderData.date = source.readString();
+            userOrderData.numberOfPeople= source.readInt();
+            userOrderData.note= source.readString();
+            userOrderData.userNickname= source.readString();
+            return userOrderData;
+        }
+
+        @Override
+        public UserOrderData[] newArray(int size) {
+            // TODO Auto-generated method stub
+            return new UserOrderData[size];
+        }
+    };
 }

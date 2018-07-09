@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -28,6 +29,9 @@ public class SendOrder extends AppCompatActivity {
     private EditText etDate;
     private EditText etPeopleNum;
     private EditText etDescription;
+    private TextView tvWithDraw;
+
+
     private Intent intent;
     private UserInformationData userData;
 
@@ -56,18 +60,11 @@ public class SendOrder extends AppCompatActivity {
         etDescription = findViewById(R.id.et_send_order_description);
         etLocation = findViewById(R.id.et_send_order_location);
         etPeopleNum = findViewById(R.id.et_send_order_people_num);
-
+        tvWithDraw = findViewById(R.id.tv_send_order_withdraw);
         btnSend.setOnClickListener(MyListener);
-
-        testData();
+        tvWithDraw.setOnClickListener(MyListener);
     }
 
-    private void testData() {
-        etDate.setText("2018-07-06");
-        etLocation.setText("四川省 成都市 高新区");
-        etDescription.setText("要漂亮小姐姐陪游");
-        etPeopleNum.setText("3");
-    }
 
     private View.OnClickListener MyListener = new View.OnClickListener() {
         @Override
@@ -75,6 +72,9 @@ public class SendOrder extends AppCompatActivity {
             switch (v.getId()) {
                 case R.id.btn_send_order_send:
                     send();
+                    break;
+                case R.id.tv_send_order_withdraw:
+                    finish();
                     break;
             }
         }

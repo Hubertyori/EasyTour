@@ -88,20 +88,6 @@
                     android:text="2018/8/15"
                     android:textSize="18sp" />
 
-                <Button
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="5dp"
-                    android:id="@+id/btn_sign_up1"
-                    android:layout_width="65dp"
-                    android:layout_height="28dp"
-                    android:layout_toRightOf="@+id/order_item_date"
-                    android:color="#f18a29"
-                    android:background="@drawable/buttonshape"
-                    android:text="查看详情"
-                    android:textColor="#f18a29"
-                    android:textSize="13dp"
-                    android:layout_centerHorizontal="true"
-                    />
             </RelativeLayout>
 
         </LinearLayout>

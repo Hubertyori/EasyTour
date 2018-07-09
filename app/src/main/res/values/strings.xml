@@ -5,7 +5,6 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
 
-
     <string name="action_settings">Settings</string>
     <string name="become_a_tourist">I want to be a tourist</string>
     <string name="prompt_email">Email</string>
@@ -103,4 +102,26 @@
     <string name="guide_finished_name">Guide name</string>
     <string name="guide_finished_orders">Finished Orders</string>
     <string name="tourist_unfinished_processing">Processing...</string>
+
+    <string name="lorem_ipsum_short">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </string>
+    <string name="lorem_ipsum_long">生活真美好 </string>
+
+    <string name="title_following">Following</string>
+    <string name="toolbar_bio">Bio</string>
+    <string name="toolbar_details">Details</string>
+
+    <string-array name="array_names">
+        <item>"Anastasia Druzhinina"</item>
+        <item>"Andriy Hristyan"</item>
+        <item>"Dmitriy Dovbnya"</item>
+        <item>"Dmitry Denisenko"</item>
+        <item>"Eduard Baev"</item>
+        <item>"Iliya Bershadskiy"</item>
+        <item>"Kirill Penzykov"</item>
+        <item>"Konstantin Rudenko"</item>
+        <item>"Oleksii Shliama"</item>
+        <item>"Pavel Apisov"</item>
+        <item>"Vadim Ooleynik"</item>
+    </string-array>
+
 </resources>

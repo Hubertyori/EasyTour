@@ -7,7 +7,7 @@
     >
     <TextView
         android:text="返回"
-        android:id="@+id/tv_withdraw"
+        android:id="@+id/tv_user_accepted_order_withdraw"
         android:layout_width="wrap_content"
 
         android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
                 />
 
             <EditText
-                android:id="@+id/et_order_ID"
+                android:id="@+id/et_user_accepted_order_ID"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -105,7 +105,7 @@
                 />
 
             <EditText
-                android:id="@+id/et_destination"
+                android:id="@+id/et_user_accepted_order_destination"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -147,7 +147,7 @@
                 />
 
             <EditText
-                android:id="@+id/et_start_time"
+                android:id="@+id/et_user_accepted_order_start_time"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -189,7 +189,7 @@
                 />
 
             <EditText
-                android:id="@+id/et_order_people"
+                android:id="@+id/et_user_accepted_order_people"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -231,7 +231,7 @@
                 />
 
             <EditText
-                android:id="@+id/ed_sign_up_user_name4"
+                android:id="@+id/et_user_accepted_order_description"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -255,13 +255,13 @@
 
     </LinearLayout>
     <Button
-        android:id="@+id/btn_sign_up"
+        android:id="@+id/btn_user_accepted_order_guide_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/input"
         android:layout_marginTop="50dp"
         android:background="#3aadfd"
-        android:text="取 消 订 单"
+        android:text="导 游 详 情"
         android:textColor="#ffffff"
         android:textSize="18dp"
         android:layout_centerHorizontal="true"

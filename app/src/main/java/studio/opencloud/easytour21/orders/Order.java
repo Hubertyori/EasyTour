@@ -1,5 +1,7 @@
 package studio.opencloud.easytour21.orders;
 
+import android.widget.Toast;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -63,10 +65,12 @@ public class Order {
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                  System.out.println("********************************************************");
                                  user_order_data = response.body().getData();
-                                 System.out.println();
-                                 for (int i = 0; i < user_order_data.size(); i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。
-                                     System.out.println(user_order_data.get(i));
-//                    Toast.makeText(OrderList.this, "请求失败", Toast.LENGTH_SHORT).show();
+                                 if(user_order_data != null)
+                                     updateUI_interface.updateFinishedUserOrderUI(user_order_data);
+                                 else
+                                 {
+                                     System.out.println("********************************************************");
+                                     System.out.println("数据为空");
                                  }
                              }
                              //请求失败时回调
@@ -98,10 +102,12 @@ public class Order {
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                  System.out.println("********************************************************");
                                  guide_order_data = response.body().getData();
-                                 System.out.println();
-                                 for (int i = 0; i < guide_order_data.size(); i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。
-                                     System.out.println(guide_order_data.get(i));
-//                    Toast.makeText(OrderList.this, "请求失败", Toast.LENGTH_SHORT).show();
+                                 if(guide_order_data != null)
+                                     updateUI_interface.updateFinishedGuideOrderUI(guide_order_data);
+                                 else
+                                 {
+                                     System.out.println("********************************************************");
+                                     System.out.println("数据为空");
                                  }
                              }
 
@@ -138,10 +144,12 @@ public class Order {
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                  System.out.println("********************************************************");
                                  user_order_data = response.body().getData();
-                                 System.out.println();
-                                 for (int i = 0; i < user_order_data.size(); i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。
-                                     System.out.println(user_order_data.get(i));
-//                    Toast.makeText(OrderList.this, "请求失败", Toast.LENGTH_SHORT).show();
+                                 if(user_order_data != null)
+                                     updateUI_interface.updateBeginUserOrderUI(user_order_data);
+                                 else
+                                 {
+                                     System.out.println("********************************************************");
+                                     System.out.println("数据为空");
                                  }
                              }
 
@@ -174,10 +182,12 @@ public class Order {
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                  System.out.println("********************************************************");
                                  guide_order_data = response.body().getData();
-                                 System.out.println();
-                                 for (int i = 0; i < guide_order_data.size(); i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。
-                                     System.out.println(guide_order_data.get(i));
-//                    Toast.makeText(OrderList.this, "请求失败", Toast.LENGTH_SHORT).show();
+                                 if(guide_order_data != null)
+                                     updateUI_interface.updateBeginGuideOrderUI(guide_order_data);
+                                 else
+                                 {
+                                     System.out.println("********************************************************");
+                                     System.out.println("数据为空");
                                  }
                              }
 
@@ -214,10 +224,13 @@ public class Order {
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                  System.out.println("********************************************************");
                                  user_order_data = response.body().getData();
-                                 System.out.println();
-                                 for (int i = 0; i < user_order_data.size(); i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。
-                                     System.out.println(user_order_data.get(i));
-//                    Toast.makeText(OrderList.this, "请求失败", Toast.LENGTH_SHORT).show();
+
+                                 if(user_order_data != null)
+                                     updateUI_interface.updateAcceptedUserOrderUI(user_order_data);
+                                 else
+                                 {
+                                     System.out.println("********************************************************");
+                                     System.out.println("数据为空");
                                  }
                              }
 
@@ -250,10 +263,12 @@ public class Order {
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                  System.out.println("********************************************************");
                                  guide_order_data = response.body().getData();
-                                 System.out.println();
-                                 for (int i = 0; i < guide_order_data.size(); i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。
-                                     System.out.println(guide_order_data.get(i));
-//                    Toast.makeText(OrderList.this, "请求失败", Toast.LENGTH_SHORT).show();
+                                 if(guide_order_data != null)
+                                     updateUI_interface.updateAcceptedGuideOrderUI(guide_order_data);
+                                 else
+                                 {
+                                     System.out.println("********************************************************");
+                                     System.out.println("数据为空");
                                  }
                              }
 
@@ -288,9 +303,13 @@ public class Order {
                              public void onResponse(Call<User_Order_Translation> call, Response<User_Order_Translation> response) {
                                  // 步骤7：处理返回的数据结果：输出翻译的内容
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                 System.out.println("********************************************************");
-                                 user_order_data = response.body().getData();
-                                 updateUI_interface.updateIdleUserOrderUI(user_order_data);
+                                 if(user_order_data != null)
+                                     updateUI_interface.updateIdleUserOrderUI(user_order_data);
+                                 else
+                                 {
+                                     System.out.println("********************************************************");
+                                     System.out.println("数据为空");
+                                 }
                              }
                              //lost river
 
@@ -322,8 +341,15 @@ public class Order {
                                  // 步骤7：处理返回的数据结果：输出翻译的内容
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                  System.out.println("********************************************************");
+
                                  guide_order_data = response.body().getData();
-                                 updateUI_interface.updateIdleGuideOrderUI(guide_order_data);
+                                 if(guide_order_data != null)
+                                    updateUI_interface.updateIdleGuideOrderUI(guide_order_data);
+                                 else
+                                 {
+                                     System.out.println("********************************************************");
+                                     System.out.println("数据为空");
+                                 }
                              }
 
                              //请求失败时回调
@@ -331,18 +357,9 @@ public class Order {
                              public void onFailure(Call<Guide_Order_Translation> call, Throwable throwable) {
                                  System.out.println("请求失败");
                                  System.out.println(throwable.getMessage());
-//                Toast.makeText(OrderList.this, "请求失败", Toast.LENGTH_SHORT).show();
                              }
                          }
             );
         }
-    }
-
-    public List<UserOrderData> getUserOrderData(){
-        return user_order_data;
-    }
-    public List<GuideOrderData> getGuideOrderData(){
-
-        return guide_order_data;
     }
 }

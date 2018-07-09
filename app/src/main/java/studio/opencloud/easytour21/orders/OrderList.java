@@ -1,13 +1,18 @@
 package studio.opencloud.easytour21.orders;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +29,11 @@ import studio.opencloud.easytour21.internet.interfaces.UpdateUI_Interface;
 
 public class OrderList extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private RefreshableView guideMainRefreshableView;
-    private ListView listView;
     private Button btnIdleOrder;
     private Button btnAcceptOrder;
     private Button btnBeginOrder;
     private Button btnFinishedOrder;
-    private ListView order_list;
+    private ListView listView;
     private String phone;
 
     private Intent intent;
@@ -55,10 +59,11 @@ public class OrderList extends AppCompatActivity implements AdapterView.OnItemCl
     private List<Integer> acceptOrders;
     private List<Integer> beginOrders;
     private List<Integer> finishedOrders;
-    private List<Map<String, String>> orderResult;
+    private List<UserOrderData> userOrderList;
+    private List<GuideOrderData> guideOrderList;
+    private List<SelfOrder> list;
 
-    private Handler handler_refresh_listview;
-
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +79,6 @@ public class OrderList extends AppCompatActivity implements AdapterView.OnItemCl
         btnBeginOrder.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
         btnAcceptOrder.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
         btnFinishedOrder.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
-
         getIdleOrders();
     }
 
@@ -93,7 +97,7 @@ public class OrderList extends AppCompatActivity implements AdapterView.OnItemCl
         btnIdleOrder.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
         btnAcceptOrder.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
         btnFinishedOrder.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
-
+        getBeginOrders();
     }
 
     public void finished() {
@@ -102,24 +106,25 @@ public class OrderList extends AppCompatActivity implements AdapterView.OnItemCl
         btnBeginOrder.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
         btnAcceptOrder.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
         btnIdleOrder.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
-
+        getFinishedOrders();
     }
 
     //初始化
     private void init() {
         //初始化列表数据
-        orderResult = new ArrayList<>();
+        userOrderList = new ArrayList<>();
+        guideOrderList = new ArrayList<>();
         finishedOrders = new ArrayList<>();
         acceptOrders = new ArrayList<>();
         idleOrders = new ArrayList<>();
         beginOrders = new ArrayList<>();
+        list = new ArrayList<SelfOrder>();
 
         status = 0;//初始状态为IDLE
 
         intent = getIntent();
         userData = intent.getParcelableExtra("userData");//获取用户个人信息
 
-        order_list = findViewById(R.id.lv_order_list);
         btnIdleOrder = findViewById(R.id.btn_order_list_idle_order);
         btnAcceptOrder = findViewById(R.id.btn_order_list_accepted_order);
         btnBeginOrder = findViewById(R.id.btn_order_list_begin_order);
@@ -139,11 +144,16 @@ public class OrderList extends AppCompatActivity implements AdapterView.OnItemCl
         }
 
         guideMainRefreshableView = findViewById(R.id.rv_order_list);
-        listView = (ListView) findViewById(R.id.lv_order_list);
+        listView = findViewById(R.id.lv_order_list);
+        listView.setOnItemClickListener(this);
         guideMainRefreshableView.setOnRefreshListener(new RefreshableView.PullToRefreshListener() {
             @Override
             public void onRefresh() {
-                ListViewDataUpdate();
+                try {
+                    ListViewDataUpdate();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 guideMainRefreshableView.finishRefreshing();
             }
         }, 0);
@@ -153,155 +163,215 @@ public class OrderList extends AppCompatActivity implements AdapterView.OnItemCl
             //更新游客订单界面
             @Override
             public void updateIdleUserOrderUI(List<UserOrderData> uod) {
-                List<SelfOrder> list = new ArrayList<SelfOrder>();
                 for (int i = 0; i < uod.size(); i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。{
                     list.add(new SelfOrder(R.drawable.logotemp, uod.get(i).getPlace().split(" ")[1], uod.get(i).getNote(), uod.get(i).getDate(), uod.get(i).getNumberOfPeople()));
                     idleOrders.add(i);
+                    userOrderList.add(uod.get(i));
                 }
                 QueryArrayAdapter adapter = new QueryArrayAdapter(OrderList.this, R.layout.order_item_idle, list);
-                order_list.setAdapter(adapter);
-                order_list.setOnItemClickListener(OrderList.this);
+                listView.setAdapter(adapter);
+//                guideMainRefreshableView.listView.setOnItemClickListener(OrderList.this);
             }
 
 
             //更新导游订单界面
             @Override
             public void updateIdleGuideOrderUI(List<GuideOrderData> uod) {
-                List<SelfOrder> list = new ArrayList<SelfOrder>();
                 for (int i = 0; i < uod.size(); i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。{
                     list.add(new SelfOrder(R.drawable.logotemp, uod.get(i).getPlace().split(" ")[1], uod.get(i).getNote(), uod.get(i).getDate(), uod.get(i).getNumberOfPeople()));
                     idleOrders.add(i);
+                    guideOrderList.add(uod.get(i));
                 }
                 QueryArrayAdapter adapter = new QueryArrayAdapter(OrderList.this, R.layout.order_item_idle, list);
-                order_list.setAdapter(adapter);
-                order_list.setOnItemClickListener(OrderList.this);
+                listView.setAdapter(adapter);
+//                guideMainRefreshableView.listView.setOnItemClickListener(OrderList.this);
             }
 
             //用户查看接收订单
             @Override
             public void updateAcceptedUserOrderUI(List<UserOrderData> uod) {
-                List<SelfOrder> list = new ArrayList<SelfOrder>();
                 for (int i = 0; i < uod.size(); i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。{
                     list.add(new SelfOrder(R.drawable.logotemp, uod.get(i).getPlace().split(" ")[1], uod.get(i).getNote(), uod.get(i).getDate(), uod.get(i).getNumberOfPeople()));
                     acceptOrders.add(i);
+                    userOrderList.add(uod.get(i));
                 }
                 QueryArrayAdapter adapter = new QueryArrayAdapter(OrderList.this, R.layout.order_item_accept, list);
-                order_list.setAdapter(adapter);
-                order_list.setOnItemClickListener(OrderList.this);
+                listView.setAdapter(adapter);
+//                listView.setOnItemClickListener(OrderList.this);
             }
 
             //导游查看接收订单
             @Override
             public void updateAcceptedGuideOrderUI(List<GuideOrderData> uod) {
-                List<SelfOrder> list = new ArrayList<SelfOrder>();
                 for (int i = 0; i < uod.size(); i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。{
                     list.add(new SelfOrder(R.drawable.logotemp, uod.get(i).getPlace().split(" ")[1], uod.get(i).getNote(), uod.get(i).getDate(), uod.get(i).getNumberOfPeople()));
                     acceptOrders.add(i);
+                    guideOrderList.add(uod.get(i));
                 }
                 QueryArrayAdapter adapter = new QueryArrayAdapter(OrderList.this, R.layout.order_item_accept, list);
-                order_list.setAdapter(adapter);
-                order_list.setOnItemClickListener(OrderList.this);
+                listView.setAdapter(adapter);
+//                listView.setOnItemClickListener(OrderList.this);
             }
 
             //用户查看开始订单
             @Override
             public void updateBeginUserOrderUI(List<UserOrderData> uod) {
-                List<SelfOrder> list = new ArrayList<SelfOrder>();
                 for (int i = 0; i < uod.size(); i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。{
                     list.add(new SelfOrder(R.drawable.logotemp, uod.get(i).getPlace().split(" ")[1], uod.get(i).getNote(), uod.get(i).getDate(), uod.get(i).getNumberOfPeople()));
                     beginOrders.add(i);
+                    userOrderList.add(uod.get(i));
                 }
                 QueryArrayAdapter adapter = new QueryArrayAdapter(OrderList.this, R.layout.order_item_begin, list);
-                order_list.setAdapter(adapter);
-                order_list.setOnItemClickListener(OrderList.this);
+                listView.setAdapter(adapter);
+//                listView.setOnItemClickListener(OrderList.this);
             }
 
             //导游查看开始订单
             @Override
             public void updateBeginGuideOrderUI(List<GuideOrderData> uod) {
-                List<SelfOrder> list = new ArrayList<SelfOrder>();
                 for (int i = 0; i < uod.size(); i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。{
                     list.add(new SelfOrder(R.drawable.logotemp, uod.get(i).getPlace().split(" ")[1], uod.get(i).getNote(), uod.get(i).getDate(), uod.get(i).getNumberOfPeople()));
                     beginOrders.add(i);
+                    guideOrderList.add(uod.get(i));
                 }
                 QueryArrayAdapter adapter = new QueryArrayAdapter(OrderList.this, R.layout.order_item_begin, list);
-                order_list.setAdapter(adapter);
-                order_list.setOnItemClickListener(OrderList.this);
+                listView.setAdapter(adapter);
+//                listView.setOnItemClickListener(OrderList.this);
             }
 
             //用户查看结束订单
             @Override
             public void updateFinishedUserOrderUI(List<UserOrderData> uod) {
-                List<SelfOrder> list = new ArrayList<SelfOrder>();
                 for (int i = 0; i < uod.size(); i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。{
                     list.add(new SelfOrder(R.drawable.logotemp, uod.get(i).getPlace().split(" ")[1], uod.get(i).getNote(), uod.get(i).getDate(), uod.get(i).getNumberOfPeople()));
                     finishedOrders.add(i);
+                    userOrderList.add(uod.get(i));
                 }
                 QueryArrayAdapter adapter = new QueryArrayAdapter(OrderList.this, R.layout.order_item_begin, list);
-                order_list.setAdapter(adapter);
-                order_list.setOnItemClickListener(OrderList.this);
+                listView.setAdapter(adapter);
+//                listView.setOnItemClickListener(OrderList.this);
             }
 
             //导游查看结束订单
             @Override
             public void updateFinishedGuideOrderUI(List<GuideOrderData> uod) {
-                List<SelfOrder> list = new ArrayList<SelfOrder>();
                 for (int i = 0; i < uod.size(); i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。{
                     list.add(new SelfOrder(R.drawable.logotemp, uod.get(i).getPlace().split(" ")[1], uod.get(i).getNote(), uod.get(i).getDate(), uod.get(i).getNumberOfPeople()));
                     finishedOrders.add(i);
+                    guideOrderList.add(uod.get(i));
                 }
                 QueryArrayAdapter adapter = new QueryArrayAdapter(OrderList.this, R.layout.order_item_begin, list);
-                order_list.setAdapter(adapter);
-                order_list.setOnItemClickListener(OrderList.this);
+                listView.setAdapter(adapter);
+//                listView.setOnItemClickListener(OrderList.this);
             }
 
         };
+        idle();//获取闲置订单数据
     }
 
-    //更新列表数据
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+        //更新列表数据
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        if (status == USER) {
+//        Toast.makeText(this, String.valueOf(position),Toast.LENGTH_LONG).show();
+        if (charactor == USER) {
             if (status == IDLE) {
                 Intent intent = new Intent(OrderList.this, UserIdleOrder.class);
                 //存放选中的订单数据，供后面查询使用
+                UserOrderData selectOrder = userOrderList.get(position);
+                intent.putExtra("selectOrder",selectOrder);
+                intent.putExtra("userData",userData);
                 startActivity(intent);
             } else if (status == ACCEPTED) {
                 Intent intent = new Intent(OrderList.this, UserAcceptedOrder.class);
+                //存放选中的订单数据，供后面查询使用
+                UserOrderData selectOrder = userOrderList.get(position);
+                intent.putExtra("selectOrder",selectOrder);
+                intent.putExtra("userData",userData);
                 startActivity(intent);
             } else if (status == BEGIN) {
                 Intent intent = new Intent(OrderList.this, UserBeginOrder.class);
+                //存放选中的订单数据，供后面查询使用
+                UserOrderData selectOrder = userOrderList.get(position);
+                intent.putExtra("selectOrder",selectOrder);
+                intent.putExtra("userData",userData);
                 startActivity(intent);
             } else if (status == FINISHED) {
                 Intent intent = new Intent(OrderList.this, UserFinishedOrder.class);
+                //存放选中的订单数据，供后面查询使用
+                UserOrderData selectOrder = userOrderList.get(position);
+                intent.putExtra("selectOrder",selectOrder);
+                intent.putExtra("userData",userData);
                 startActivity(intent);
             }
         } else {
             if (status == IDLE) {
                 Intent intent = new Intent(OrderList.this, GuideIdleOrder.class);
+                GuideOrderData selectOrder = guideOrderList.get(idleOrders.get(position));
+                intent.putExtra("selectOrder",selectOrder);
+                intent.putExtra("userData",userData);
                 startActivity(intent);
             } else if (status == ACCEPTED) {
                 Intent intent = new Intent(OrderList.this, GuideAcceptedOrder.class);
+                //存放选中的订单数据，供后面查询使用
+                UserOrderData selectOrder = userOrderList.get(position);
+                intent.putExtra("selectOrder",selectOrder);
+                intent.putExtra("userData",userData);
                 startActivity(intent);
             } else if (status == BEGIN) {
                 Intent intent = new Intent(OrderList.this, GuideBeginOrder.class);
+                //存放选中的订单数据，供后面查询使用
+                UserOrderData selectOrder = userOrderList.get(position);
+                intent.putExtra("selectOrder",selectOrder);
+                intent.putExtra("userData",userData);
                 startActivity(intent);
             } else if (status == FINISHED) {
                 Intent intent = new Intent(OrderList.this, GuideFinishedOrder.class);
+                //存放选中的订单数据，供后面查询使用
+                UserOrderData selectOrder = userOrderList.get(position);
+                intent.putExtra("selectOrder",selectOrder);
+                intent.putExtra("userData",userData);
                 startActivity(intent);
             }
         }
     }
-
     private void ListViewDataUpdate() {
-        orderResult.clear();
+        userOrderList.clear();
+        guideOrderList.clear();
         finishedOrders.clear();
         acceptOrders.clear();
         idleOrders.clear();
         beginOrders.clear();
-        handler_refresh_listview.post(run_refresh_listview);
-
+        list.clear();
+        refreshList();
     }
+
+    private void refreshList() {
+        if (status == IDLE) {
+            idle();
+        }
+        if (status == ACCEPTED) {
+            accept();
+        }
+        if (status == BEGIN) {
+            begin();
+        }
+        if (status == FINISHED) {
+            finished();
+        }
+    }
+
 
     private Runnable run_refresh_listview = new Runnable() {
         @Override
@@ -344,11 +414,9 @@ public class OrderList extends AppCompatActivity implements AdapterView.OnItemCl
         if (charactor == GUIDE) {
             order = new Order(charactor, userData.getGuideIDnumbr(), updateUI_interface);
             order.getFinishedOrders();
-            lGuideOrderData = order.getGuideOrderData();
         } else {
             order = new Order(charactor, userData.getTelephone(), updateUI_interface);
             order.getFinishedOrders();
-            lUserOrderData = order.getUserOrderData();
         }
     }
 
@@ -356,11 +424,9 @@ public class OrderList extends AppCompatActivity implements AdapterView.OnItemCl
         if (charactor == GUIDE) {
             order = new Order(charactor, userData.getGuideIDnumbr(), updateUI_interface);
             order.getBeginOrders();
-            lGuideOrderData = order.getGuideOrderData();
         } else {
             order = new Order(charactor, userData.getTelephone(), updateUI_interface);
             order.getBeginOrders();
-            lUserOrderData = order.getUserOrderData();
         }
     }
 
@@ -368,11 +434,9 @@ public class OrderList extends AppCompatActivity implements AdapterView.OnItemCl
         if (charactor == GUIDE) {
             order = new Order(charactor, userData.getGuideIDnumbr(), updateUI_interface);
             order.getAcceptOrders();
-//            lGuideOrderData = order.getGuideOrderData();
         } else {
             order = new Order(charactor, userData.getTelephone(), updateUI_interface);
             order.getAcceptOrders();
-//            lUserOrderData = order.getUserOrderData();
         }
     }
 

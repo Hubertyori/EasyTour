@@ -30,7 +30,7 @@ public interface QuerryOrder_Interface {
     @POST("GuideGetAcceptedOrders.php")
     @FormUrlEncoded
     Call<Guide_Order_Translation> getGuideAcceptedOrders(@Field("IDnumber") String IDnumber);
-    @POST("GuideGetAcceptedOrders.php")
+    @POST("GuideGetBeginOrders.php.php")
     @FormUrlEncoded
     Call<Guide_Order_Translation> getGuideBeginOrders(@Field("IDnumber") String IDnumber);
     @POST("GuideGetFinishedOrders.php")

@@ -1,5 +1,4 @@
 package studio.opencloud.easytour21.View;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -18,7 +17,8 @@ import android.widget.TextView;
 
 import studio.opclound.easytour.R;
 
-public class RefreshableView  extends LinearLayout implements View.OnTouchListener {
+public class RefreshableView extends LinearLayout implements View.OnTouchListener {
+
     /**
      * 下拉状态
      */

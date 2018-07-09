@@ -7,5 +7,45 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="TextViewProfileToolbarTitle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">@dimen/text_size_profile_toolbar_title</item>
+        <item name="android:layout_width">100dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/blue</item>
+        <item name="colorControlActivated">@color/orange</item>
+    </style>
 
+    <declare-styleable name="LikeView">
+        <!--当前数值,默认0-->
+        <attr name="number" format="integer"/>
+        <!--数字颜色,默认#888888-->
+        <attr name="textColor" format="color"/>
+        <!--图形外边颜色,默认#888888-->
+        <attr name="graphColor" format="color"/>
+        <!--当前激活时图形颜色,默认#ca5f5f-->
+        <attr name="animateColor" format="color"/>
+        <!--字体大小,决定控件高度以及图形大小,默认14sp-->
+        <attr name="textSize" format="dimension"/>
+        <!--动画时间,默认300-->
+        <attr name="animateDuration" format="integer"/>
+        <!--图形与数字间的距离,默认3dp-->
+        <attr name="distance" format="dimension"/>
+        <!--图形与数字高度的比例,默认1.3-->
+        <attr name="graphTextHeightRatio" format="float"/>
+        <!--图形外边绘制宽度,默认3dp-->
+        <attr name="graphStrokeWidth" format="dimension"/>
+        <!--数字绘制宽度,默认2dp-->
+        <attr name="textStrokeWidth" format="dimension"/>
+        <!--是否激活,默认false-->
+        <attr name="isActivated" format="boolean"/>
+        <!--是否自动测量数字修改后的宽度改变,防止更改状态时控件宽度改变,默认开启-->
+        <attr name="autoMeasureMaxWidth" format="boolean"/>
+        <!--是否不允许取消点赞,默认false-->
+        <attr name="notAllowedCancel" format="boolean"/>
+    </declare-styleable>
 </resources>
