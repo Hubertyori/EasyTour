@@ -46,16 +46,16 @@ public class UserBeginOrder extends AppCompatActivity {
         etPeopleNum = findViewById(R.id.et_user_begin_order_order_people);
         etDescription = findViewById(R.id.et_user_begin_order_description);
         etDate = findViewById(R.id.et_user_begin_order_start_time);
-        btnGuideDetail = findViewById(R.id.btn_user_begin_order_guide_details);
+        btnGuideDetail = findViewById(R.id.btn_user_begin_order_to_finish_order);
         btnGuideDetail.setOnClickListener(MyListener);
         tvWithDraw = findViewById(R.id.tv_user_begin_order_withdraw);
         tvWithDraw.setOnClickListener(MyListener);
         setData();
     }
     private void setData() {
-        etOrderID.setText(selectOrder.getOrderID());
+        etOrderID.setText(String.valueOf(selectOrder.getOrderID()));
         etDestination.setText(selectOrder.getPlace());
-        etPeopleNum.setText(selectOrder.getNumberOfPeople());
+        etPeopleNum.setText(String.valueOf(selectOrder.getNumberOfPeople()));
         etDescription.setText(selectOrder.getNote());
         etDate.setText(selectOrder.getDate());
     }
@@ -64,7 +64,7 @@ public class UserBeginOrder extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             switch (view.getId()){
-                case R.id.btn_user_begin_order_guide_details:
+                case R.id.btn_user_begin_order_to_finish_order:
                     guideDetail();
                     break;
                 case R.id.tv_user_begin_order_withdraw:
@@ -77,5 +77,7 @@ public class UserBeginOrder extends AppCompatActivity {
 
     private void guideDetail() {
         //todo 填写导游详情制作页面表格
+        Intent intent = new Intent(UserBeginOrder.this,Evaluate.class);
+//        intent.putExtra()
     }
 }

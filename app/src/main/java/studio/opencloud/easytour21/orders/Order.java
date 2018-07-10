@@ -65,12 +65,12 @@ public class Order {
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                  System.out.println("********************************************************");
                                  user_order_data = response.body().getData();
-                                 if(user_order_data != null)
+                                 if(response.body().getCode() != 0)
                                      updateUI_interface.updateFinishedUserOrderUI(user_order_data);
                                  else
                                  {
                                      System.out.println("********************************************************");
-                                     System.out.println("数据为空");
+                                     System.out.println(response.body().getMessage());
                                  }
                              }
                              //请求失败时回调
@@ -102,12 +102,12 @@ public class Order {
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                  System.out.println("********************************************************");
                                  guide_order_data = response.body().getData();
-                                 if(guide_order_data != null)
+                                 if( response.body().getCode()!= 0)
                                      updateUI_interface.updateFinishedGuideOrderUI(guide_order_data);
                                  else
                                  {
                                      System.out.println("********************************************************");
-                                     System.out.println("数据为空");
+                                     System.out.println(response.body().getMessage());
                                  }
                              }
 
@@ -144,12 +144,12 @@ public class Order {
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                  System.out.println("********************************************************");
                                  user_order_data = response.body().getData();
-                                 if(user_order_data != null)
+                                 if(response.body().getCode() != 0)
                                      updateUI_interface.updateBeginUserOrderUI(user_order_data);
                                  else
                                  {
                                      System.out.println("********************************************************");
-                                     System.out.println("数据为空");
+                                     System.out.println(response.body().getMessage());
                                  }
                              }
 
@@ -182,12 +182,12 @@ public class Order {
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                  System.out.println("********************************************************");
                                  guide_order_data = response.body().getData();
-                                 if(guide_order_data != null)
+                                 if(response.body().getCode() != 0)
                                      updateUI_interface.updateBeginGuideOrderUI(guide_order_data);
                                  else
                                  {
                                      System.out.println("********************************************************");
-                                     System.out.println("数据为空");
+                                     System.out.println(response.body().getMessage());
                                  }
                              }
 
@@ -225,12 +225,12 @@ public class Order {
                                  System.out.println("********************************************************");
                                  user_order_data = response.body().getData();
 
-                                 if(user_order_data != null)
+                                 if(response.body().getCode() != 0)
                                      updateUI_interface.updateAcceptedUserOrderUI(user_order_data);
                                  else
                                  {
                                      System.out.println("********************************************************");
-                                     System.out.println("数据为空");
+                                     System.out.println(response.body().getMessage());
                                  }
                              }
 
@@ -263,12 +263,12 @@ public class Order {
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                  System.out.println("********************************************************");
                                  guide_order_data = response.body().getData();
-                                 if(guide_order_data != null)
+                                 if(response.body().getCode() != 0)
                                      updateUI_interface.updateAcceptedGuideOrderUI(guide_order_data);
                                  else
                                  {
                                      System.out.println("********************************************************");
-                                     System.out.println("数据为空");
+                                     System.out.println(response.body().getMessage());
                                  }
                              }
 
@@ -303,12 +303,12 @@ public class Order {
                              public void onResponse(Call<User_Order_Translation> call, Response<User_Order_Translation> response) {
                                  // 步骤7：处理返回的数据结果：输出翻译的内容
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                 if(user_order_data != null)
+                                 if(response.body().getCode() != 0)
                                      updateUI_interface.updateIdleUserOrderUI(user_order_data);
                                  else
                                  {
                                      System.out.println("********************************************************");
-                                     System.out.println("数据为空");
+                                     System.out.println(response.body().getMessage());
                                  }
                              }
                              //lost river
@@ -343,12 +343,12 @@ public class Order {
                                  System.out.println("********************************************************");
 
                                  guide_order_data = response.body().getData();
-                                 if(guide_order_data != null)
+                                 if(response.body().getCode() != 0)
                                     updateUI_interface.updateIdleGuideOrderUI(guide_order_data);
                                  else
                                  {
                                      System.out.println("********************************************************");
-                                     System.out.println("数据为空");
+                                     System.out.println(response.body().getMessage());
                                  }
                              }
 

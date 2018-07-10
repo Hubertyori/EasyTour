@@ -53,9 +53,9 @@ public class UserAcceptedOrder extends AppCompatActivity {
         setData();
     }
     private void setData() {
-        etOrderID.setText(selectOrder.getOrderID());
+        etOrderID.setText(String.valueOf(selectOrder.getOrderID()));
         etDestination.setText(selectOrder.getPlace());
-        etPeopleNum.setText(selectOrder.getNumberOfPeople());
+        etPeopleNum.setText(String.valueOf(selectOrder.getNumberOfPeople()));
         etDescription.setText(selectOrder.getNote());
         etDate.setText(selectOrder.getDate());
     }

@@ -1,9 +1,9 @@
 package studio.opencloud.easytour21.orders;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MenuItem;
@@ -27,7 +27,7 @@ import studio.opencloud.easytour21.internet.datas.UserInformationData;
 import studio.opencloud.easytour21.internet.datas.UserOrderData;
 import studio.opencloud.easytour21.internet.interfaces.UpdateUI_Interface;
 
-public class OrderList extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class OrderList extends Activity implements AdapterView.OnItemClickListener {
     private RefreshableView guideMainRefreshableView;
     private Button btnIdleOrder;
     private Button btnAcceptOrder;
@@ -35,7 +35,7 @@ public class OrderList extends AppCompatActivity implements AdapterView.OnItemCl
     private Button btnFinishedOrder;
     private ListView listView;
     private String phone;
-
+    private RefreshableView.PullToRefreshListener refreshPullList;
     private Intent intent;
     private UserInformationData userData;
     private Order order;
@@ -146,7 +146,7 @@ public class OrderList extends AppCompatActivity implements AdapterView.OnItemCl
         guideMainRefreshableView = findViewById(R.id.rv_order_list);
         listView = findViewById(R.id.lv_order_list);
         listView.setOnItemClickListener(this);
-        guideMainRefreshableView.setOnRefreshListener(new RefreshableView.PullToRefreshListener() {
+        refreshPullList = new RefreshableView.PullToRefreshListener() {
             @Override
             public void onRefresh() {
                 try {
@@ -156,7 +156,8 @@ public class OrderList extends AppCompatActivity implements AdapterView.OnItemCl
                 }
                 guideMainRefreshableView.finishRefreshing();
             }
-        }, 0);
+        };
+        guideMainRefreshableView.setOnRefreshListener(refreshPullList, 0);
 
 //界面更新函数接口
         updateUI_interface = new UpdateUI_Interface() {
@@ -325,21 +326,21 @@ public class OrderList extends AppCompatActivity implements AdapterView.OnItemCl
             } else if (status == ACCEPTED) {
                 Intent intent = new Intent(OrderList.this, GuideAcceptedOrder.class);
                 //存放选中的订单数据，供后面查询使用
-                UserOrderData selectOrder = userOrderList.get(position);
+                GuideOrderData selectOrder = guideOrderList.get(position);
                 intent.putExtra("selectOrder",selectOrder);
                 intent.putExtra("userData",userData);
                 startActivity(intent);
             } else if (status == BEGIN) {
                 Intent intent = new Intent(OrderList.this, GuideBeginOrder.class);
                 //存放选中的订单数据，供后面查询使用
-                UserOrderData selectOrder = userOrderList.get(position);
+                GuideOrderData selectOrder = guideOrderList.get(position);
                 intent.putExtra("selectOrder",selectOrder);
                 intent.putExtra("userData",userData);
                 startActivity(intent);
             } else if (status == FINISHED) {
                 Intent intent = new Intent(OrderList.this, GuideFinishedOrder.class);
                 //存放选中的订单数据，供后面查询使用
-                UserOrderData selectOrder = userOrderList.get(position);
+                GuideOrderData selectOrder = guideOrderList.get(position);
                 intent.putExtra("selectOrder",selectOrder);
                 intent.putExtra("userData",userData);
                 startActivity(intent);
@@ -347,6 +348,11 @@ public class OrderList extends AppCompatActivity implements AdapterView.OnItemCl
         }
     }
     private void ListViewDataUpdate() {
+        listClear();
+        refreshList();
+    }
+
+    private void listClear() {
         userOrderList.clear();
         guideOrderList.clear();
         finishedOrders.clear();
@@ -354,7 +360,6 @@ public class OrderList extends AppCompatActivity implements AdapterView.OnItemCl
         idleOrders.clear();
         beginOrders.clear();
         list.clear();
-        refreshList();
     }
 
     private void refreshList() {
@@ -393,6 +398,7 @@ public class OrderList extends AppCompatActivity implements AdapterView.OnItemCl
     private View.OnClickListener MyListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            listClear();
             switch (v.getId()) {
                 case R.id.btn_order_list_idle_order:
                     idle();

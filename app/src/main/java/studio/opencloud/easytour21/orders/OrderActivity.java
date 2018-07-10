@@ -35,7 +35,7 @@ public class OrderActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState){
 
-
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
         Intent intent = getIntent();
@@ -128,8 +128,6 @@ public class OrderActivity extends AppCompatActivity {
         QueryArrayAdapter adapter = new QueryArrayAdapter(OrderActivity.this,R.layout.order_item_finished,getDataFinished());
         order_list.setAdapter(adapter);
     }
-
-
 
 
 

@@ -15,13 +15,14 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import studio.opclound.easytour.R;
+import studio.opencloud.easytour21.internet.datas.GuideOrderData;
 import studio.opencloud.easytour21.internet.datas.UserInformationData;
 import studio.opencloud.easytour21.internet.datas.UserOrderData;
 import studio.opencloud.easytour21.internet.interfaces.CancelOrder_Interface;
 import studio.opencloud.easytour21.internet.translations.Register_Translation;
 
 public class GuideAcceptedOrder extends AppCompatActivity {
-    private UserOrderData selectOrder;
+    private GuideOrderData selectOrder;
     private UserInformationData userData;
     private EditText etOrderID;
     private EditText etUserName;
@@ -34,6 +35,7 @@ public class GuideAcceptedOrder extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guide_accepted_order);
         Intent intent =getIntent();
@@ -48,7 +50,7 @@ public class GuideAcceptedOrder extends AppCompatActivity {
         etOrderID = findViewById(R.id.et_guide_accepted_order_ID);
         etDestination = findViewById(R.id.et_guide_accepted_order_destination);
         etPeopleNum = findViewById(R.id.et_guide_accepted_order_people_number);
-        etDescription = findViewById(R.id.et_guide_accepted_order_destination);
+        etDescription = findViewById(R.id.et_guide_accepted_order_remark);
         etDate = findViewById(R.id.et_guide_accepted_order_start_time);
         tvWithDraw = findViewById(R.id.tv_guide_accepted_order_withdraw);
         tvWithDraw.setOnClickListener(MyListener);
@@ -56,10 +58,10 @@ public class GuideAcceptedOrder extends AppCompatActivity {
     }
     private void setData() {
         etUserName.setText(selectOrder.getUserNickname());
-        etPhone.setText("Tobefinished");
-        etOrderID.setText(selectOrder.getOrderID());
+        etPhone.setText("15523352924");
+        etOrderID.setText(String.valueOf(selectOrder.getOrderID()));
         etDestination.setText(selectOrder.getPlace());
-        etPeopleNum.setText(selectOrder.getNumberOfPeople());
+        etPeopleNum.setText(String.valueOf(selectOrder.getNumberOfPeople()));
         etDescription.setText(selectOrder.getNote());
         etDate.setText(selectOrder.getDate());
     }

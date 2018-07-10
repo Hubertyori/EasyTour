@@ -23,7 +23,7 @@ android:background="@drawable/bg3"
 
     android:layout_height="wrap_content"
     android:textColor="#ae120f0f"
-    android:layout_marginTop="5dp"
+    android:layout_marginTop="40dp"
     android:textSize="28sp"/>
 <TextView
     android:text="                   ——  开始您的私人旅行定制"

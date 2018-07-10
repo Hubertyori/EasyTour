@@ -62,6 +62,8 @@
         <activity android:name="studio.opencloud.easytour21.orders.GuideBeginOrder" />
         <activity android:name="studio.opencloud.easytour21.orders.GuideFinishedOrder" />
         <activity android:name="studio.opencloud.easytour21.orders.GuideDetails"></activity>
+        <activity android:name="studio.opencloud.easytour21.mainspace.MainActivity_X"></activity>
+        <activity android:name="studio.opencloud.easytour21.orders.OrderActivity"></activity>
     </application>
 
 </manifest>

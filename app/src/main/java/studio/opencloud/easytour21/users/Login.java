@@ -25,6 +25,7 @@ import studio.opencloud.easytour21.internet.datas.UserInformationData;
 import studio.opencloud.easytour21.internet.interfaces.Login_Interface;
 import studio.opencloud.easytour21.internet.translations.Login_Translation;
 import studio.opencloud.easytour21.mainspace.MainActivity;
+import studio.opencloud.easytour21.mainspace.MainActivity_X;
 
 /**
  * Created by lining on 2018/3/24.
@@ -136,7 +137,7 @@ public class Login extends Activity {
                 System.out.println(response.body().getData().getNickname());
                 if (response.body().getCode() == 1) {
                     userData = response.body().getData();
-                    intent = new Intent(Login.this, MainActivity.class);
+                    intent = new Intent(Login.this, MainActivity_X.class);
                     intent.putExtra("userData", userData);
 //                        userDataDiliver();
                     startActivity(intent);

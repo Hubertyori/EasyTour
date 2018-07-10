@@ -15,13 +15,14 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import studio.opclound.easytour.R;
+import studio.opencloud.easytour21.internet.datas.GuideOrderData;
 import studio.opencloud.easytour21.internet.datas.UserInformationData;
 import studio.opencloud.easytour21.internet.datas.UserOrderData;
 import studio.opencloud.easytour21.internet.interfaces.CancelOrder_Interface;
 import studio.opencloud.easytour21.internet.translations.Register_Translation;
 
 public class GuideFinishedOrder extends AppCompatActivity {
-    private UserOrderData selectOrder;
+    private GuideOrderData selectOrder;
     private UserInformationData userData;
     private EditText etOrderID;
     private EditText etUserName;
@@ -34,6 +35,7 @@ public class GuideFinishedOrder extends AppCompatActivity {
     private Button btnUserDetail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guide_finished_order);
         Intent intent =getIntent();
@@ -56,9 +58,9 @@ public class GuideFinishedOrder extends AppCompatActivity {
         setData();
     }
     private void setData() {
-        etOrderID.setText(selectOrder.getOrderID());
+        etOrderID.setText(String.valueOf(selectOrder.getOrderID()));
         etDestination.setText(selectOrder.getPlace());
-        etPeopleNum.setText(selectOrder.getNumberOfPeople());
+        etPeopleNum.setText(String.valueOf(selectOrder.getNumberOfPeople()));
         etDescription.setText(selectOrder.getNote());
         etDate.setText(selectOrder.getDate());
         etPhone.setText("TBD");

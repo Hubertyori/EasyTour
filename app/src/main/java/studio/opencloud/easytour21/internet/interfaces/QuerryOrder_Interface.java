@@ -26,14 +26,14 @@ public interface QuerryOrder_Interface {
     //导游获取订单
     @POST("GuideGetNearbyOrders.php")
     @FormUrlEncoded
-    Call<Guide_Order_Translation> getGuideNearByOrders(@Field("IDnumber") String IDnumber);
+    Call<Guide_Order_Translation> getGuideNearByOrders(@Field("guideIDNumber") String IDnumber);
     @POST("GuideGetAcceptedOrders.php")
     @FormUrlEncoded
-    Call<Guide_Order_Translation> getGuideAcceptedOrders(@Field("IDnumber") String IDnumber);
+    Call<Guide_Order_Translation> getGuideAcceptedOrders(@Field("guideIDNumber") String IDnumber);
     @POST("GuideGetBeginOrders.php.php")
     @FormUrlEncoded
-    Call<Guide_Order_Translation> getGuideBeginOrders(@Field("IDnumber") String IDnumber);
+    Call<Guide_Order_Translation> getGuideBeginOrders(@Field("guideIDNumber") String IDnumber);
     @POST("GuideGetFinishedOrders.php")
     @FormUrlEncoded
-    Call<Guide_Order_Translation> getGuideFinishedOrders(@Field("IDnumber") String IDnumber);
+    Call<Guide_Order_Translation> getGuideFinishedOrders(@Field("guideIDNumber") String IDnumber);
 }

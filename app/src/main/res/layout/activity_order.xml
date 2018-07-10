@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="order">
+    tools:context="studio.opencloud.easytour21.orders.OrderActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -63,7 +63,7 @@
                 android:textSize="18sp"
                 android:onClick="finished"/>
         </LinearLayout>
-        <studio.opencloud.easytour21.View.GuideMainRefreshableView
+        <studio.opencloud.easytour21.View.RefreshableView
         android:id="@+id/tourist_query_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -75,7 +75,7 @@
             android:layout_margin="2dp"
             >
         </ListView>
-    </studio.opencloud.easytour21.View.GuideMainRefreshableView>
+    </studio.opencloud.easytour21.View.RefreshableView>
 
 
 
