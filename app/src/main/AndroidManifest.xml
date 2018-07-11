@@ -45,7 +45,7 @@
         <activity android:name="studio.opencloud.easytour21.orders.SendOrder" />
         <activity android:name="studio.opencloud.easytour21.orders.OrderInformation" />
         <activity android:name="studio.opencloud.easytour21.orders.TakeOrder" />
-        <activity android:name="studio.opencloud.easytour21.orders.Evaluate" />
+        <activity android:name="studio.opencloud.easytour21.evalution.UserEvaluate" />
         <activity android:name="studio.opencloud.easytour21.chat.ContactList" />
         <activity android:name="studio.opencloud.easytour21.chat.ChatWindow" />
         <activity android:name="studio.opencloud.easytour21.blogs.SendBlog" />
@@ -61,9 +61,12 @@
         <activity android:name="studio.opencloud.easytour21.orders.GuideAcceptedOrder" />
         <activity android:name="studio.opencloud.easytour21.orders.GuideBeginOrder" />
         <activity android:name="studio.opencloud.easytour21.orders.GuideFinishedOrder" />
-        <activity android:name="studio.opencloud.easytour21.orders.GuideDetails"></activity>
-        <activity android:name="studio.opencloud.easytour21.mainspace.MainActivity_X"></activity>
-        <activity android:name="studio.opencloud.easytour21.orders.OrderActivity"></activity>
+        <activity android:name="studio.opencloud.easytour21.orders.GuideDetails" />
+        <activity android:name="studio.opencloud.easytour21.mainspace.MainActivity_X" />
+        <activity android:name="studio.opencloud.easytour21.orders.OrderActivity" />
+        <activity android:name="studio.opencloud.easytour21.evalution.GuideEvaluate" />
+        <activity android:name="studio.opencloud.easytour21.orders.HistoryGuideInfor" />
+        <activity android:name="studio.opencloud.easytour21.orders.HistoryUserInfor"></activity>
     </application>
 
 </manifest>

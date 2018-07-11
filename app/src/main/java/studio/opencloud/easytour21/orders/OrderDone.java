@@ -5,8 +5,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import studio.opencloud.easytour21.internet.interfaces.DealDone_Interface;
-import studio.opencloud.easytour21.internet.interfaces.OrderDone_Interface;
+import studio.opencloud.easytour21.internet.interfaces.guide.OrderDone_Interface;
 import studio.opencloud.easytour21.internet.translations.Register_Translation;
 
 public class OrderDone {

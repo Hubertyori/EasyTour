@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OrderActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="0.5dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0.5dp"
+            >
+            <Button
+                android:id="@+id/btn_i"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="附近订单"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:background="@color/colorButtonBlue"
+                android:onClick="idle"
+                />
+
+            <Button
+                android:padding="3dp"
+                android:id="@+id/btn_a"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="申请订单"
+                android:textColor="@color/white"
+                android:background="@color/colorButtonGray"
+                android:textSize="18sp"
+                android:onClick="accept"/>
+            <Button
+                android:padding="3dp"
+                android:id="@+id/btn_b"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="进行中"
+                android:textColor="@color/white"
+                android:background="@color/colorButtonGray"
+                android:textSize="18sp"
+                android:onClick="begin"/>
+            <Button
+                android:padding="3dp"
+                android:id="@+id/btn_f"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="已完成"
+                android:textColor="@color/white"
+                android:background="@color/colorButtonGray"
+                android:textSize="18sp"
+                android:onClick="finished"/>
+        </LinearLayout>
+        <studio.opencloud.easytour21.View.RefreshableView
+            android:id="@+id/tourist_query_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tourist_query_orders_listview"
+                android:layout_margin="2dp"
+                >
+            </ListView>
+        </studio.opencloud.easytour21.View.RefreshableView>
+
+
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

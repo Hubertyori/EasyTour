@@ -19,12 +19,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import studio.opclound.easytour.R;
 import studio.opencloud.easytour21.internet.datas.UserInformationData;
-import studio.opencloud.easytour21.internet.interfaces.Login_Interface;
-import studio.opencloud.easytour21.internet.interfaces.SendOrder_Interface;
-import studio.opencloud.easytour21.internet.translations.Login_Translation;
+import studio.opencloud.easytour21.internet.interfaces.user.SendOrder_Interface;
 import studio.opencloud.easytour21.internet.translations.Register_Translation;
-import studio.opencloud.easytour21.users.Login;
-import studio.opencloud.easytour21.users.UserInformation;
+
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.TimePickerView;
 

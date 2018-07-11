@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import studio.opclound.easytour.R;
 import studio.opencloud.easytour21.internet.datas.UserInformationData;
 import studio.opencloud.easytour21.internet.datas.UserOrderData;
-import studio.opencloud.easytour21.internet.interfaces.CancelOrder_Interface;
+import studio.opencloud.easytour21.internet.interfaces.user.CancelOrder_Interface;
 import studio.opencloud.easytour21.internet.translations.Register_Translation;
 
 public class UserIdleOrder extends AppCompatActivity {

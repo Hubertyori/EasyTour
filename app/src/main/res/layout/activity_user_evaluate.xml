@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+
+    >
+
+    <TextView
+        android:text="返回"
+        android:id="@+id/tv_user_evaluate_withdraw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"/>
+    <!-- 星级评分条 -->
+    <TextView
+        android:text="请为这次服务打分"
+        android:layout_marginLeft="60dp"
+        android:layout_below="@+id/tv_withdraw"
+        android:id="@+id/tv_main"
+        android:layout_width="wrap_content"
+        android:textStyle="bold"
+
+        android:layout_height="wrap_content"
+        android:textColor="@color/orange"
+        android:layout_marginTop="5dp"
+        android:textSize="28sp"/>
+    <ImageView
+
+        android:layout_width="500dp"
+        android:layout_height="300dp"
+        android:layout_below="@+id/tv_main"
+        android:id="@+id/iv_user_evaluate_guide_headic"
+        android:src="@drawable/default_ic"
+
+
+        />
+
+    <RatingBar
+        android:id="@+id/rb_user_evaluate_star"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="45dp"
+        android:layout_below="@+id/iv_user_evaluate_guide_headic"
+        android:numStars="5"
+        android:rating="2.5"
+        android:isIndicator="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/RatingBar"/>
+
+    <!-- 按钮 -->
+    <Button
+        android:id="@+id/btn_user_evaluate_finish"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="75dp"
+        android:gravity="center"
+        android:background="@drawable/buttonshape"
+        android:textSize="18sp"
+        android:textColor="@color/orange"
+        android:text="提交" />
+
+
+
+</RelativeLayout>

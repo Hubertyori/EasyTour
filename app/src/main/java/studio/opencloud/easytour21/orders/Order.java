@@ -1,7 +1,5 @@
 package studio.opencloud.easytour21.orders;
 
-import android.widget.Toast;
-
 import java.util.List;
 
 import retrofit2.Call;
@@ -10,10 +8,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import studio.opencloud.easytour21.internet.datas.GuideOrderData;
+import studio.opencloud.easytour21.internet.datas.UserBeginOrderData;
 import studio.opencloud.easytour21.internet.datas.UserOrderData;
-import studio.opencloud.easytour21.internet.interfaces.QuerryOrder_Interface;
-import studio.opencloud.easytour21.internet.interfaces.UpdateUI_Interface;
+import studio.opencloud.easytour21.internet.interfaces.pbinterface.QuerryOrder_Interface;
+import studio.opencloud.easytour21.internet.interfaces.pbinterface.UpdateUI_Interface;
 import studio.opencloud.easytour21.internet.translations.Guide_Order_Translation;
+import studio.opencloud.easytour21.internet.translations.User_Begin_Order_Translation;
 import studio.opencloud.easytour21.internet.translations.User_Order_Translation;
 
 public class Order {
@@ -29,10 +29,11 @@ public class Order {
     private String phone;
     private String IDnumber;
     private List<UserOrderData> user_order_data;
+    private List<UserBeginOrderData> user_begin_order_data;
     private List<GuideOrderData> guide_order_data;
-    private  UpdateUI_Interface updateUI_interface;
+    private UpdateUI_Interface updateUI_interface;
 
-    Order(int charactor, String phone, UpdateUI_Interface updateUI_interface ) {
+    Order(int charactor, String phone, UpdateUI_Interface updateUI_interface) {
         this.updateUI_interface = updateUI_interface;
         this.charactor = charactor;
         if (charactor == USER) {
@@ -65,14 +66,14 @@ public class Order {
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                  System.out.println("********************************************************");
                                  user_order_data = response.body().getData();
-                                 if(response.body().getCode() != 0)
+                                 if (response.body().getCode() != 0)
                                      updateUI_interface.updateFinishedUserOrderUI(user_order_data);
-                                 else
-                                 {
+                                 else {
                                      System.out.println("********************************************************");
                                      System.out.println(response.body().getMessage());
                                  }
                              }
+
                              //请求失败时回调
                              @Override
                              public void onFailure(Call<User_Order_Translation> call, Throwable throwable) {
@@ -102,12 +103,13 @@ public class Order {
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                  System.out.println("********************************************************");
                                  guide_order_data = response.body().getData();
-                                 if( response.body().getCode()!= 0)
+                                 if (response.body().getCode() != 0)
                                      updateUI_interface.updateFinishedGuideOrderUI(guide_order_data);
-                                 else
-                                 {
+                                 else {
+
                                      System.out.println("********************************************************");
                                      System.out.println(response.body().getMessage());
+                                     System.out.println(response.body().getCode());
                                  }
                              }
 
@@ -133,21 +135,20 @@ public class Order {
             // 步骤5:创建 网络请求接口 的实例
             QuerryOrder_Interface request = retrofit.create(QuerryOrder_Interface.class);
 
-            Call<User_Order_Translation> call = request.getUserBeginOrders(phone);
+            Call<User_Begin_Order_Translation> call = request.getUserBeginOrders(phone);
 
             //步骤6:发送网络请求(异步)
-            call.enqueue(new Callback<User_Order_Translation>() {
+            call.enqueue(new Callback<User_Begin_Order_Translation>() {
                              //请求成功时回调
                              @Override
-                             public void onResponse(Call<User_Order_Translation> call, Response<User_Order_Translation> response) {
+                             public void onResponse(Call<User_Begin_Order_Translation> call, Response<User_Begin_Order_Translation> response) {
                                  // 步骤7：处理返回的数据结果：输出翻译的内容
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                  System.out.println("********************************************************");
-                                 user_order_data = response.body().getData();
-                                 if(response.body().getCode() != 0)
-                                     updateUI_interface.updateBeginUserOrderUI(user_order_data);
-                                 else
-                                 {
+                                 user_begin_order_data = response.body().getData();
+                                 if (response.body().getCode() != 0)
+                                     updateUI_interface.updateBeginUserOrderUI(user_begin_order_data);
+                                 else {
                                      System.out.println("********************************************************");
                                      System.out.println(response.body().getMessage());
                                  }
@@ -155,7 +156,7 @@ public class Order {
 
                              //请求失败时回调
                              @Override
-                             public void onFailure(Call<User_Order_Translation> call, Throwable throwable) {
+                             public void onFailure(Call<User_Begin_Order_Translation> call, Throwable throwable) {
                                  System.out.println("请求失败");
                                  System.out.println(throwable.getMessage());
 //                Toast.makeText(OrderList.this, "请求失败", Toast.LENGTH_SHORT).show();
@@ -180,12 +181,12 @@ public class Order {
                              public void onResponse(Call<Guide_Order_Translation> call, Response<Guide_Order_Translation> response) {
                                  // 步骤7：处理返回的数据结果：输出翻译的内容
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
                                  System.out.println("********************************************************");
                                  guide_order_data = response.body().getData();
-                                 if(response.body().getCode() != 0)
+                                 if (response.body().getCode() != 0)
                                      updateUI_interface.updateBeginGuideOrderUI(guide_order_data);
-                                 else
-                                 {
+                                 else {
                                      System.out.println("********************************************************");
                                      System.out.println(response.body().getMessage());
                                  }
@@ -223,12 +224,11 @@ public class Order {
                                  // 步骤7：处理返回的数据结果：输出翻译的内容
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                  System.out.println("********************************************************");
-                                 user_order_data = response.body().getData();
-
-                                 if(response.body().getCode() != 0)
+                                 if (response.body().getCode() != 0) {
+                                     user_order_data = response.body().getData();
                                      updateUI_interface.updateAcceptedUserOrderUI(user_order_data);
-                                 else
-                                 {
+                                 }
+                                 else {
                                      System.out.println("********************************************************");
                                      System.out.println(response.body().getMessage());
                                  }
@@ -262,11 +262,11 @@ public class Order {
                                  // 步骤7：处理返回的数据结果：输出翻译的内容
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                  System.out.println("********************************************************");
-                                 guide_order_data = response.body().getData();
-                                 if(response.body().getCode() != 0)
+
+                                 if (response.body().getCode() != 0) {
+                                     guide_order_data = response.body().getData();
                                      updateUI_interface.updateAcceptedGuideOrderUI(guide_order_data);
-                                 else
-                                 {
+                                 } else {
                                      System.out.println("********************************************************");
                                      System.out.println(response.body().getMessage());
                                  }
@@ -303,10 +303,10 @@ public class Order {
                              public void onResponse(Call<User_Order_Translation> call, Response<User_Order_Translation> response) {
                                  // 步骤7：处理返回的数据结果：输出翻译的内容
 //                Toast.makeText(OrderList.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                 if(response.body().getCode() != 0)
+                                 if (response.body().getCode() != 0) {
+                                     user_order_data = response.body().getData();
                                      updateUI_interface.updateIdleUserOrderUI(user_order_data);
-                                 else
-                                 {
+                                 } else {
                                      System.out.println("********************************************************");
                                      System.out.println(response.body().getMessage());
                                  }
@@ -343,10 +343,9 @@ public class Order {
                                  System.out.println("********************************************************");
 
                                  guide_order_data = response.body().getData();
-                                 if(response.body().getCode() != 0)
-                                    updateUI_interface.updateIdleGuideOrderUI(guide_order_data);
-                                 else
-                                 {
+                                 if (response.body().getCode() != 0)
+                                     updateUI_interface.updateIdleGuideOrderUI(guide_order_data);
+                                 else {
                                      System.out.println("********************************************************");
                                      System.out.println(response.body().getMessage());
                                  }

@@ -12,24 +12,12 @@ import android.widget.Toast;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.regex.Pattern;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import studio.opclound.easytour.R;
 import studio.opencloud.easytour21.Time.TimeCount;
-import studio.opencloud.easytour21.internet.interfaces.Login_Interface;
-import studio.opencloud.easytour21.internet.translations.Login_Translation;
-import studio.opencloud.easytour21.mainspace.MainActivity;
 import studio.opencloud.easytour21.miaodi.httpApiDemo.common.httpApiDemo.IndustrySMS;
 import studio.opencloud.easytour21.miaodi.httpApiDemo.common.httpApiDemo.common.Config;
-
-import android.os.CountDownTimer;
 
 public class Verification extends Activity {
     private String userPhone;

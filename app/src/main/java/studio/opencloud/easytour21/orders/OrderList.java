@@ -3,29 +3,25 @@ package studio.opencloud.easytour21.orders;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Handler;
 import android.os.Bundle;
-import android.view.GestureDetector;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import studio.opclound.easytour.R;
 
 import studio.opencloud.easytour21.View.RefreshableView;
 import studio.opencloud.easytour21.adapters.QueryArrayAdapter;
 import studio.opencloud.easytour21.internet.datas.GuideOrderData;
+import studio.opencloud.easytour21.internet.datas.UserBeginOrderData;
 import studio.opencloud.easytour21.internet.datas.UserInformationData;
 import studio.opencloud.easytour21.internet.datas.UserOrderData;
-import studio.opencloud.easytour21.internet.interfaces.UpdateUI_Interface;
+import studio.opencloud.easytour21.internet.interfaces.pbinterface.UpdateUI_Interface;
 
 public class OrderList extends Activity implements AdapterView.OnItemClickListener {
     private RefreshableView guideMainRefreshableView;
@@ -60,6 +56,7 @@ public class OrderList extends Activity implements AdapterView.OnItemClickListen
     private List<Integer> beginOrders;
     private List<Integer> finishedOrders;
     private List<UserOrderData> userOrderList;
+    private List<UserBeginOrderData> userBeginOrderList;
     private List<GuideOrderData> guideOrderList;
     private List<SelfOrder> list;
 
@@ -67,7 +64,7 @@ public class OrderList extends Activity implements AdapterView.OnItemClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order_list);
+        setContentView(R.layout.activity_user_order_list);
         init();
     }
 
@@ -112,6 +109,7 @@ public class OrderList extends Activity implements AdapterView.OnItemClickListen
     //初始化
     private void init() {
         //初始化列表数据
+        userBeginOrderList = new ArrayList<>();
         userOrderList = new ArrayList<>();
         guideOrderList = new ArrayList<>();
         finishedOrders = new ArrayList<>();
@@ -216,11 +214,11 @@ public class OrderList extends Activity implements AdapterView.OnItemClickListen
 
             //用户查看开始订单
             @Override
-            public void updateBeginUserOrderUI(List<UserOrderData> uod) {
+            public void updateBeginUserOrderUI(List<UserBeginOrderData> uod) {
                 for (int i = 0; i < uod.size(); i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。{
                     list.add(new SelfOrder(R.drawable.logotemp, uod.get(i).getPlace().split(" ")[1], uod.get(i).getNote(), uod.get(i).getDate(), uod.get(i).getNumberOfPeople()));
                     beginOrders.add(i);
-                    userOrderList.add(uod.get(i));
+                    userBeginOrderList.add(uod.get(i));
                 }
                 QueryArrayAdapter adapter = new QueryArrayAdapter(OrderList.this, R.layout.order_item_begin, list);
                 listView.setAdapter(adapter);
@@ -304,7 +302,7 @@ public class OrderList extends Activity implements AdapterView.OnItemClickListen
             } else if (status == BEGIN) {
                 Intent intent = new Intent(OrderList.this, UserBeginOrder.class);
                 //存放选中的订单数据，供后面查询使用
-                UserOrderData selectOrder = userOrderList.get(position);
+                UserBeginOrderData selectOrder = userBeginOrderList.get(position);
                 intent.putExtra("selectOrder",selectOrder);
                 intent.putExtra("userData",userData);
                 startActivity(intent);
@@ -353,6 +351,7 @@ public class OrderList extends Activity implements AdapterView.OnItemClickListen
     }
 
     private void listClear() {
+        userBeginOrderList.clear();
         userOrderList.clear();
         guideOrderList.clear();
         finishedOrders.clear();

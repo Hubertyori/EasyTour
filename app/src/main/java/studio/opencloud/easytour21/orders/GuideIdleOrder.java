@@ -17,8 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import studio.opclound.easytour.R;
 import studio.opencloud.easytour21.internet.datas.GuideOrderData;
 import studio.opencloud.easytour21.internet.datas.UserInformationData;
-import studio.opencloud.easytour21.internet.datas.UserOrderData;
-import studio.opencloud.easytour21.internet.interfaces.TakeOrder_Interface;
+import studio.opencloud.easytour21.internet.interfaces.guide.TakeOrder_Interface;
 import studio.opencloud.easytour21.internet.translations.Register_Translation;
 
 public class GuideIdleOrder extends AppCompatActivity {

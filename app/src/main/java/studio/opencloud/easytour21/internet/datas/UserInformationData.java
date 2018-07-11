@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class UserInformationData implements Parcelable {
+    //登陆反馈的总体信息
     private String nickname;
     private String telephone;
     private String sex;

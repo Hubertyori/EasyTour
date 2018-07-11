@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class UserOrderData implements Parcelable {
+    //用户可获得的订单信息
     private int orderID;
     private String status;
     private String place;

@@ -338,7 +338,7 @@
 
     </LinearLayout>
     <Button
-        android:id="@+id/btn_guide_begin_order_take_order"
+        android:id="@+id/btn_guide_begin_order_finish_order"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/input"

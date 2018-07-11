@@ -1,14 +1,11 @@
 package studio.opencloud.easytour21.orders;
 
-import android.widget.Toast;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import studio.opencloud.easytour21.internet.interfaces.DealDone_Interface;
-import studio.opencloud.easytour21.internet.interfaces.SendOrder_Interface;
+import studio.opencloud.easytour21.internet.interfaces.user.DealDone_Interface;
 import studio.opencloud.easytour21.internet.translations.Register_Translation;
 //用户选择导游。
 public class DealDone {

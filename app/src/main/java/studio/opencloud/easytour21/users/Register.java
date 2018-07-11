@@ -22,9 +22,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import studio.opencloud.easytour21.internet.interfaces.Register_Interface;
+import studio.opencloud.easytour21.internet.interfaces.pbinterface.Register_Interface;
 import studio.opencloud.easytour21.internet.translations.Register_Translation;
-import studio.opencloud.easytour21.mainspace.MainActivity;
 import studio.opencloud.easytour21.photo.ClipBaseActivity;
 import studio.opclound.easytour.R;
 

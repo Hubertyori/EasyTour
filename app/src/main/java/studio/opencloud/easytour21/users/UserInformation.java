@@ -1,6 +1,5 @@
 package studio.opencloud.easytour21.users;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -29,10 +28,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import studio.opclound.easytour.R;
 import studio.opencloud.easytour21.internet.datas.UserInformationData;
-import studio.opencloud.easytour21.internet.interfaces.ChangeGuideInformation_Interface;
-import studio.opencloud.easytour21.internet.interfaces.ChangeInformation_Interface;
-import studio.opencloud.easytour21.internet.interfaces.Login_Interface;
-import studio.opencloud.easytour21.internet.translations.Login_Translation;
+import studio.opencloud.easytour21.internet.interfaces.guide.ChangeGuideInformation_Interface;
+import studio.opencloud.easytour21.internet.interfaces.pbinterface.ChangeInformation_Interface;
 import studio.opencloud.easytour21.internet.translations.Register_Translation;
 import studio.opencloud.easytour21.photo.ClipBaseActivity;
 
