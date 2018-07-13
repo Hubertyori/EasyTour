@@ -3,8 +3,6 @@ package studio.opencloud.easytour21.internet.datas;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import studio.opencloud.easytour21.orders.UserBeginOrder;
-
 public class UserBeginOrderData implements Parcelable {
     //用户可获得的订单信息
     private int orderID;
@@ -95,7 +93,7 @@ public class UserBeginOrderData implements Parcelable {
         parcel.writeString(note);
         parcel.writeString(userNickname);
     }
-    public static final Parcelable.Creator<UserBeginOrderData> CREATOR = new Parcelable.Creator<UserBeginOrderData>() {
+    public static final Creator<UserBeginOrderData> CREATOR = new Creator<UserBeginOrderData>() {
 
         @Override
         public UserBeginOrderData createFromParcel(Parcel source) {

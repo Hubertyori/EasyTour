@@ -1,8 +1,8 @@
 package studio.opencloud.easytour21.evalution;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,8 +23,8 @@ import studio.opclound.easytour.R;
 import studio.opencloud.easytour21.internet.datas.EvaluateUserInfoData;
 import studio.opencloud.easytour21.internet.datas.GuideGetUserInfoByIDData;
 import studio.opencloud.easytour21.internet.datas.GuideOrderData;
-import studio.opencloud.easytour21.internet.interfaces.pbinterface.FinisheOrder_Interface;
 import studio.opencloud.easytour21.internet.interfaces.guide.UserEvaluateInformation_Update_Interface;
+import studio.opencloud.easytour21.internet.interfaces.pbinterface.FinisheOrder_Interface;
 import studio.opencloud.easytour21.internet.translations.Register_Translation;
 
 public class GuideEvaluate extends AppCompatActivity {
@@ -44,6 +44,7 @@ public class GuideEvaluate extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guide_evaluate);
         intent = getIntent();
@@ -82,6 +83,8 @@ public class GuideEvaluate extends AppCompatActivity {
             switch (view.getId()) {
                 case R.id.btn_guide_begin_evaluate:
                     evaluateGuide();
+                    finish();
+
                     break;
                 case R.id.tv_guide_evaluate_withdraw:
                     finish();

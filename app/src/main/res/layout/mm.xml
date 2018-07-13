@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/toolbar_profile"
+        android:background="@color/gray"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_toolbar"
+
+        android:clickable="true"
+        >
+
+        <ImageView
+            android:id="@+id/toolbar_profile_back"
+            android:layout_width="@dimen/height_toolbar"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:padding="15dp"
+            android:src="@drawable/ic_arrow_left" />
+
+        <RelativeLayout
+            android:layout_width="200dp"
+            android:layout_height="33dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_black_oval">
+
+            <TextView
+                android:text="@string/toolbar_bio"
+                android:textColor="@color/black"
+                android:layout_margin="2dp"
+                android:background="@drawable/bg_orange_oval"
+                style="@style/TextViewProfileToolbarTitle" />
+
+            <TextView
+                android:text="@string/toolbar_details"
+                android:textColor="@color/white"
+                android:layout_alignParentRight="true"
+                style="@style/TextViewProfileToolbarTitle" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

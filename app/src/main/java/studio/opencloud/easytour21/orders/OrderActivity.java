@@ -67,20 +67,20 @@ public class OrderActivity extends AppCompatActivity {
         @Override
         public void run() {
             if(flag == IDLE){
-                QueryArrayAdapter adapter = new QueryArrayAdapter(OrderActivity.this,R.layout.order_item_idle,getDataIdle());
+                QueryArrayAdapter adapter = new QueryArrayAdapter(OrderActivity.this, R.layout.order_item_idle,getDataIdle());
                 order_list.setAdapter(adapter);
             }
             if(flag == ACCEPT){
-                QueryArrayAdapter adapter = new QueryArrayAdapter(OrderActivity.this,R.layout.order_item_accept,getDataAccept());
+                QueryArrayAdapter adapter = new QueryArrayAdapter(OrderActivity.this, R.layout.order_item_accept,getDataAccept());
                 order_list.setAdapter(adapter);
             }
 
             if(flag == BEGIN){
-                QueryArrayAdapter adapter = new QueryArrayAdapter(OrderActivity.this,R.layout.order_item_begin,getDataIdle());
+                QueryArrayAdapter adapter = new QueryArrayAdapter(OrderActivity.this, R.layout.order_item_begin,getDataIdle());
                 order_list.setAdapter(adapter);
             }
             if(flag == FINISHED){
-                QueryArrayAdapter adapter = new QueryArrayAdapter(OrderActivity.this,R.layout.order_item_finished,getDataAccept());
+                QueryArrayAdapter adapter = new QueryArrayAdapter(OrderActivity.this, R.layout.order_item_finished,getDataAccept());
                 order_list.setAdapter(adapter);
             }
         }
@@ -97,7 +97,7 @@ public class OrderActivity extends AppCompatActivity {
         btn_b.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
         btn_a.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
         btn_f.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
-        QueryArrayAdapter adapter = new QueryArrayAdapter(OrderActivity.this,R.layout.order_item_idle,getDataIdle());
+        QueryArrayAdapter adapter = new QueryArrayAdapter(OrderActivity.this, R.layout.order_item_idle,getDataIdle());
         order_list.setAdapter(adapter);
 
     }
@@ -107,7 +107,7 @@ public class OrderActivity extends AppCompatActivity {
         btn_b.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
         btn_i.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
         btn_f.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
-        QueryArrayAdapter adapter = new QueryArrayAdapter(OrderActivity.this,R.layout.order_item_accept,getDataAccept());
+        QueryArrayAdapter adapter = new QueryArrayAdapter(OrderActivity.this, R.layout.order_item_accept,getDataAccept());
         order_list.setAdapter(adapter);
     }
     public void begin(View view) {
@@ -116,7 +116,7 @@ public class OrderActivity extends AppCompatActivity {
         btn_i.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
         btn_a.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
         btn_f.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
-        QueryArrayAdapter adapter = new QueryArrayAdapter(OrderActivity.this,R.layout.order_item_begin,getDataBegin());
+        QueryArrayAdapter adapter = new QueryArrayAdapter(OrderActivity.this, R.layout.order_item_begin,getDataBegin());
         order_list.setAdapter(adapter);
     }
     public void finished(View view) {
@@ -125,7 +125,7 @@ public class OrderActivity extends AppCompatActivity {
         btn_b.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
         btn_a.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
         btn_i.setBackgroundColor(getResources().getColor(R.color.colorButtonGray));
-        QueryArrayAdapter adapter = new QueryArrayAdapter(OrderActivity.this,R.layout.order_item_finished,getDataFinished());
+        QueryArrayAdapter adapter = new QueryArrayAdapter(OrderActivity.this, R.layout.order_item_finished,getDataFinished());
         order_list.setAdapter(adapter);
     }
 

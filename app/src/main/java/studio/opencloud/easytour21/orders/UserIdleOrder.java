@@ -1,8 +1,8 @@
 package studio.opencloud.easytour21.orders;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,9 +50,9 @@ public class UserIdleOrder extends AppCompatActivity {
     }
 
     private void setData() {
-        etOrderID.setText(selectOrder.getOrderID());
+        etOrderID.setText(String.valueOf(selectOrder.getOrderID()));
         etDestination.setText(selectOrder.getPlace());
-        etPeopleNum.setText(selectOrder.getNumberOfPeople());
+        etPeopleNum.setText(String.valueOf(selectOrder.getNumberOfPeople()));
         etDescription.setText(selectOrder.getNote());
         etDate.setText(selectOrder.getDate());
     }

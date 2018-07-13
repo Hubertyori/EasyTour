@@ -19,17 +19,17 @@
         android:icon="@drawable/ic_menu_send"
         android:title="    我的订单"/>
     <item
-        android:id="@+id/client"
-        android:icon="@drawable/ic_menu_zhu"
-        android:title="    \我的客户"/>
+        android:id="@+id/guide_order"
+        android:icon="@drawable/ic_menu_zoom"
+        android:title="    导游订单"/>
     <item
         android:id="@+id/info"
         android:icon="@drawable/ic_menu_manage"
         android:title="    个人信息"/>
+
     <item
         android:id="@+id/out"
-        android:icon="@drawable/ic_menu_zhu"
+        android:icon="@drawable/ic_menu_out"
         android:title="    注销"/>
-
 
 </menu>

@@ -105,7 +105,7 @@ public class GuideGetUserInfoByIDData implements Parcelable {
 
     }
 
-    public static final Parcelable.Creator<GuideGetUserInfoByIDData> CREATOR = new Parcelable.Creator<GuideGetUserInfoByIDData>() {;
+    public static final Creator<GuideGetUserInfoByIDData> CREATOR = new Creator<GuideGetUserInfoByIDData>() {;
 
         @Override
         public GuideGetUserInfoByIDData createFromParcel(Parcel source) {

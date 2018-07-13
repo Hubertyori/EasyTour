@@ -1,8 +1,8 @@
 package studio.opencloud.easytour21.orders;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,11 +17,8 @@ import studio.opclound.easytour.R;
 import studio.opencloud.easytour21.evalution.UserEvaluate;
 import studio.opencloud.easytour21.internet.datas.UserBeginOrderData;
 import studio.opencloud.easytour21.internet.datas.UserInformationData;
-import studio.opencloud.easytour21.internet.datas.UserOrderData;
-import studio.opencloud.easytour21.internet.interfaces.pbinterface.QuerryOrder_Interface;
 import studio.opencloud.easytour21.internet.interfaces.user.GetGuideInforByID_Interface;
 import studio.opencloud.easytour21.internet.translations.Login_Translation;
-import studio.opencloud.easytour21.internet.translations.User_Begin_Order_Translation;
 
 public class UserBeginOrder extends AppCompatActivity {
     private UserBeginOrderData selectOrder;

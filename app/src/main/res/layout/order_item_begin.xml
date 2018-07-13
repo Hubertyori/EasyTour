@@ -54,27 +54,17 @@
                     android:textColor="#000000"
                     />
 
-                <TextView
 
-                    android:id="@+id/order_Text"
-                    android:layout_width="40dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_toRightOf="@+id/order_item_title"
-                    android:text="杨一航"
-                    android:textSize="12sp"
-                    android:textColor="#000000"
-                    />
                 <TextView
 
                     android:id="@+id/order_Text1"
                     android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:layout_marginLeft="2dp"
+                    android:layout_marginLeft="50dp"
                     android:layout_marginTop="15dp"
-                    android:layout_toRightOf="@+id/order_Text"
-                    android:text="已接单"
+                    android:layout_toRightOf="@+id/order_item_title"
+                    android:text="进行中"
+
                     android:textSize="12sp"
                     android:textColor="#027b39"
                     />

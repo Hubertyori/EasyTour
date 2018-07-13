@@ -10,17 +10,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import studio.opencloud.easytour21.area_choose.JsonFileReader;
-import studio.opencloud.easytour21.area_choose.provincebean;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import studio.opclound.easytour.R;
-import studio.opencloud.easytour21.internet.datas.UserInformationData;
-import studio.opencloud.easytour21.internet.interfaces.user.SendOrder_Interface;
-import studio.opencloud.easytour21.internet.translations.Register_Translation;
 
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.TimePickerView;
@@ -32,6 +21,18 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import studio.opclound.easytour.R;
+import studio.opencloud.easytour21.area_choose.JsonFileReader;
+import studio.opencloud.easytour21.area_choose.provincebean;
+import studio.opencloud.easytour21.internet.datas.UserInformationData;
+import studio.opencloud.easytour21.internet.interfaces.user.SendOrder_Interface;
+import studio.opencloud.easytour21.internet.translations.Register_Translation;
 
 public class SendOrder extends Activity {
     private Button btnSend;

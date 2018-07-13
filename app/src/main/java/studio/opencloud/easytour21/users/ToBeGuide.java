@@ -17,7 +17,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import studio.opclound.easytour.R;
+
 import studio.opencloud.easytour21.internet.interfaces.user.RegisterAsGuide_Interface;
+import studio.opencloud.easytour21.internet.translations.Login_Translation;
 import studio.opencloud.easytour21.internet.translations.Register_Translation;
 
 public class ToBeGuide extends AppCompatActivity {

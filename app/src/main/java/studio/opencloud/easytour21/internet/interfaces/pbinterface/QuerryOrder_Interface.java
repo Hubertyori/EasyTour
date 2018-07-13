@@ -4,10 +4,10 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
-import studio.opencloud.easytour21.internet.translations.Guide_Bgein_Order_Translation;
 import studio.opencloud.easytour21.internet.translations.Guide_Order_Translation;
 import studio.opencloud.easytour21.internet.translations.User_Begin_Order_Translation;
 import studio.opencloud.easytour21.internet.translations.User_Order_Translation;
+
 //查询订单界面
 public interface QuerryOrder_Interface {
     //用户获取订单

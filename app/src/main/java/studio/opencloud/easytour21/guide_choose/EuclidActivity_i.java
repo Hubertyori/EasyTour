@@ -12,7 +12,7 @@ import java.util.Map;
 
 import studio.opclound.easytour.R;
 
-public class EuclidActivity_i extends EuclidActivity{
+public class EuclidActivity_i extends EuclidActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

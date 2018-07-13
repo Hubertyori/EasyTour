@@ -1,15 +1,13 @@
 package studio.opencloud.easytour21.orders;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
 import studio.opclound.easytour.R;
-import studio.opencloud.easytour21.evalution.GuideEvaluate;
 import studio.opencloud.easytour21.internet.datas.UserInformationData;
 
 public class HistoryGuideInfor extends AppCompatActivity {
@@ -24,6 +22,7 @@ public class HistoryGuideInfor extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_guide_infor);
         guideInfo = getIntent().getParcelableExtra("guideInfo");

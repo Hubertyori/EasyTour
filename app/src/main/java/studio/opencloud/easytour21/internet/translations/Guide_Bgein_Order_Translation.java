@@ -3,8 +3,6 @@ package studio.opencloud.easytour21.internet.translations;
 import java.util.List;
 
 import studio.opencloud.easytour21.internet.datas.GuideBeginOrderData;
-import studio.opencloud.easytour21.internet.datas.UserBeginOrderData;
-import studio.opencloud.easytour21.internet.datas.UserOrderData;
 
 public class Guide_Bgein_Order_Translation {
     //导游BeginOrder转译

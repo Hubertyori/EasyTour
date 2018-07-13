@@ -11,5 +11,5 @@ public interface TakeOrder_Interface {
     @POST("GuideAcceptOrder.php")
     @FormUrlEncoded
     Call<Register_Translation> takeOrder(@Field("orderID") String orderID,
-                                                 @Field("IDNumber") String IDNumber);
+                                         @Field("IDNumber") String IDNumber);
 }

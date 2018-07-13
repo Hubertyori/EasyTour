@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="5dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+        <ImageView
+            android:id="@+id/tx_head"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@drawable/header_bg"/>
+        <TextView
+            android:id="@+id/tx_news_simple_photos_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:maxLines="2"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:text="震精！某985大学学子竟干出这种事！！"
+            android:textColor="#696969"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            >
+            <TextView
+                android:id="@+id/tx_news_simple_photos_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1小时前" />
+
+            <TextView
+                android:id="@+id/img_news_simple_photos_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="新闻集锦" />
+        </LinearLayout>
+    </LinearLayout>
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="center"-->
+        <!--&gt;-->
+       <!---->
+
+    <!--</RelativeLayout>-->
+</RelativeLayout>

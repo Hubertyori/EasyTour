@@ -85,7 +85,7 @@ public class GuideOrderData implements Parcelable{
         parcel.writeString(userNickname);
 
     }
-    public static final Parcelable.Creator<GuideOrderData> CREATOR = new Parcelable.Creator<GuideOrderData>() {
+    public static final Creator<GuideOrderData> CREATOR = new Creator<GuideOrderData>() {
 
         @Override
         public GuideOrderData createFromParcel(Parcel source) {

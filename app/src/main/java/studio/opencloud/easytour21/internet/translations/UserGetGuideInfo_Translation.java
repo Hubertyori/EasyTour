@@ -3,7 +3,6 @@ package studio.opencloud.easytour21.internet.translations;
 import java.util.List;
 
 import studio.opencloud.easytour21.internet.datas.EvaluateGuideInfomationData;
-import studio.opencloud.easytour21.internet.datas.GuideInfomation;
 
 public class UserGetGuideInfo_Translation {
     //用户获取导游信息接口转译

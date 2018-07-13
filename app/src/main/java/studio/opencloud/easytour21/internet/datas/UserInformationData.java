@@ -20,6 +20,26 @@ public class UserInformationData implements Parcelable {
     private String guideservercity;
     private float guidestar;
 
+    public UserInformationData(){
+
+    }
+    public UserInformationData(UserInformationData uid) {
+        nickname = uid.getNickname();
+        telephone = uid.getTelephone();
+        sex = uid.getSex();
+        headphoto = uid.getHeadphoto();
+        introduce = uid.getIntroduce();
+        isguide = uid.getIsguide();
+        guideid = uid.getGuideid();
+        star = uid.getStar();
+        password = uid.getPassword();
+        guiderealname = uid.getGuiderealname();
+        guideIDnumbr = uid.getGuideIDnumbr();
+        guideNumber = uid.getGuideNumber();
+        guideservercity = uid.getGuideservercity();
+        guidestar = uid.getGuidestar();
+    }
+
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
@@ -155,26 +175,26 @@ public class UserInformationData implements Parcelable {
         parcel.writeFloat(guidestar);
     }
 
-    public static final Parcelable.Creator<UserInformationData> CREATOR = new Parcelable.Creator<UserInformationData>() {
+    public static final Creator<UserInformationData> CREATOR = new Creator<UserInformationData>() {
 
         @Override
         public UserInformationData createFromParcel(Parcel source) {
             // TODO Auto-generated method stub
             UserInformationData userInformationData = new UserInformationData();
             userInformationData.nickname = source.readString();
-            userInformationData.telephone= source.readString();
-            userInformationData.sex= source.readString();
-            userInformationData.headphoto= source.readString();
-            userInformationData.introduce= source.readString();
-            userInformationData.isguide= source.readString();
-            userInformationData.guideid= source.readInt();
-            userInformationData.star= source.readFloat();
-            userInformationData.password= source.readString();
-            userInformationData.guiderealname= source.readString();
-            userInformationData.guideIDnumbr= source.readString();
-            userInformationData.guideNumber= source.readString();
-            userInformationData.guideservercity= source.readString();
-            userInformationData.guidestar= source.readFloat();
+            userInformationData.telephone = source.readString();
+            userInformationData.sex = source.readString();
+            userInformationData.headphoto = source.readString();
+            userInformationData.introduce = source.readString();
+            userInformationData.isguide = source.readString();
+            userInformationData.guideid = source.readInt();
+            userInformationData.star = source.readFloat();
+            userInformationData.password = source.readString();
+            userInformationData.guiderealname = source.readString();
+            userInformationData.guideIDnumbr = source.readString();
+            userInformationData.guideNumber = source.readString();
+            userInformationData.guideservercity = source.readString();
+            userInformationData.guidestar = source.readFloat();
 
             return userInformationData;
         }

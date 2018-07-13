@@ -18,7 +18,8 @@
     <!-- 星级评分条 -->
     <TextView
         android:text="请为您的客户打分"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="100dp"
+        android:layout_margin="40dp"
         android:layout_below="@+id/tv_withdraw"
         android:id="@+id/tv_main"
         android:layout_width="wrap_content"
@@ -53,11 +54,11 @@
     <!-- 按钮 -->
     <Button
         android:id="@+id/btn_guide_begin_evaluate"
-        android:layout_width="110dp"
-        android:layout_height="60dp"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="75dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
         android:background="@drawable/buttonshape"
         android:textSize="18sp"

@@ -84,7 +84,7 @@ public class UserOrderData implements Parcelable {
         parcel.writeString(note);
         parcel.writeString(userNickname);
     }
-    public static final Parcelable.Creator<UserOrderData> CREATOR = new Parcelable.Creator<UserOrderData>() {
+    public static final Creator<UserOrderData> CREATOR = new Creator<UserOrderData>() {
 
         @Override
         public UserOrderData createFromParcel(Parcel source) {

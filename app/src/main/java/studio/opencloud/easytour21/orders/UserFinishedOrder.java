@@ -1,17 +1,14 @@
 package studio.opencloud.easytour21.orders;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,17 +18,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import studio.opclound.easytour.R;
-import studio.opencloud.easytour21.guide_choose.EuclidListAdapter;
 import studio.opencloud.easytour21.internet.datas.EvaluateGuideInfomationData;
 import studio.opencloud.easytour21.internet.datas.UserInformationData;
 import studio.opencloud.easytour21.internet.datas.UserOrderData;
-import studio.opencloud.easytour21.internet.interfaces.pbinterface.QuerryOrder_Interface;
 import studio.opencloud.easytour21.internet.interfaces.user.GetGuideInforByID_Interface;
-import studio.opencloud.easytour21.internet.interfaces.user.UserGetGuideInfo_Interface;
 import studio.opencloud.easytour21.internet.interfaces.user.GuideEvaluateInformation_Update_Interface;
-import studio.opencloud.easytour21.internet.translations.Guide_Order_Translation;
 import studio.opencloud.easytour21.internet.translations.Login_Translation;
-import studio.opencloud.easytour21.internet.translations.UserGetGuideInfo_Translation;
 
 public class UserFinishedOrder extends AppCompatActivity {
     private UserOrderData selectOrder;

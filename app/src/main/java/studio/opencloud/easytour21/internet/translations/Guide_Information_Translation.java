@@ -3,7 +3,6 @@ package studio.opencloud.easytour21.internet.translations;
 import java.util.List;
 
 import studio.opencloud.easytour21.internet.datas.GuideInfomation;
-import studio.opencloud.easytour21.internet.datas.GuideOrderData;
 
 public class Guide_Information_Translation {
     private int code;

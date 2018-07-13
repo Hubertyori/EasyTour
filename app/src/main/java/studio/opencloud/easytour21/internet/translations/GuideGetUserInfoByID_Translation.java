@@ -1,8 +1,5 @@
 package studio.opencloud.easytour21.internet.translations;
 
-import java.util.List;
-
-import studio.opencloud.easytour21.internet.datas.GuideBeginOrderData;
 import studio.opencloud.easytour21.internet.datas.GuideGetUserInfoByIDData;
 
 public class GuideGetUserInfoByID_Translation {

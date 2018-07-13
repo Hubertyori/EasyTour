@@ -8,6 +8,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import studio.opencloud.easytour21.internet.translations.Register_Translation;
+
 //注册接口
 public interface Register_Interface {
     @POST("Register.php")

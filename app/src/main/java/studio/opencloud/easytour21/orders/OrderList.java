@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import studio.opclound.easytour.R;
-
 import studio.opencloud.easytour21.View.RefreshableView;
 import studio.opencloud.easytour21.adapters.QueryArrayAdapter;
 import studio.opencloud.easytour21.internet.datas.GuideOrderData;
@@ -246,7 +245,7 @@ public class OrderList extends Activity implements AdapterView.OnItemClickListen
                     finishedOrders.add(i);
                     userOrderList.add(uod.get(i));
                 }
-                QueryArrayAdapter adapter = new QueryArrayAdapter(OrderList.this, R.layout.order_item_begin, list);
+                QueryArrayAdapter adapter = new QueryArrayAdapter(OrderList.this, R.layout.order_item_finished, list);
                 listView.setAdapter(adapter);
 //                listView.setOnItemClickListener(OrderList.this);
             }
@@ -259,7 +258,7 @@ public class OrderList extends Activity implements AdapterView.OnItemClickListen
                     finishedOrders.add(i);
                     guideOrderList.add(uod.get(i));
                 }
-                QueryArrayAdapter adapter = new QueryArrayAdapter(OrderList.this, R.layout.order_item_begin, list);
+                QueryArrayAdapter adapter = new QueryArrayAdapter(OrderList.this, R.layout.order_item_finished, list);
                 listView.setAdapter(adapter);
 //                listView.setOnItemClickListener(OrderList.this);
             }

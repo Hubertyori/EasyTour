@@ -1,5 +1,6 @@
 package studio.opencloud.easytour21.users;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -28,9 +29,13 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import studio.opclound.easytour.R;
 import studio.opencloud.easytour21.internet.datas.UserInformationData;
+
 import studio.opencloud.easytour21.internet.interfaces.guide.ChangeGuideInformation_Interface;
 import studio.opencloud.easytour21.internet.interfaces.pbinterface.ChangeInformation_Interface;
+import studio.opencloud.easytour21.internet.translations.Login_Translation;
 import studio.opencloud.easytour21.internet.translations.Register_Translation;
+import studio.opencloud.easytour21.mainspace.MainActivity_X;
+import studio.opencloud.easytour21.orders.OrderList;
 import studio.opencloud.easytour21.photo.ClipBaseActivity;
 
 public class UserInformation extends ClipBaseActivity {
@@ -190,6 +195,10 @@ public class UserInformation extends ClipBaseActivity {
             switch (v.getId()) {
                 case R.id.btn_change_information_update:
                     update();
+
+                    intent = new Intent(UserInformation.this, MainActivity_X.class);
+                    intent.putExtra("userData", userInformation);
+                    startActivity(intent);
                     break;
                 case R.id.tv_change_information_to_be_guide:
                     Intent toBeGuideIntent = new Intent(UserInformation.this,ToBeGuide.class);
@@ -303,6 +312,10 @@ public class UserInformation extends ClipBaseActivity {
                     }
                 });
         }
+        userInformation.setSex(etSex.getText().toString());
+        userInformation.setIntroduce(etDescription.getText().toString());
+        userInformation.setTelephone(etPhone.getText().toString());
+        userInformation.setNickname(etUserName.getText().toString());
     }
 
     private void collectGuideInfo() {

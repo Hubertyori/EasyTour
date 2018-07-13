@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="studio.opencloud.easytour21.orders.OrderList">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="0.5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0.5dp">
+
+            <Button
+                android:id="@+id/btn_order_list_idle_order"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@color/colorButtonBlue"
+                android:text="待处理"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+
+                />
+
+            <Button
+                android:id="@+id/btn_order_list_accepted_order"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@color/colorButtonGray"
+                android:padding="3dp"
+                android:text="已接单"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_order_list_begin_order"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@color/colorButtonGray"
+                android:padding="3dp"
+                android:text="进行中"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_order_list_finished_order"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@color/colorButtonGray"
+                android:padding="3dp"
+                android:text="已完成"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <studio.opencloud.easytour21.View.RefreshableView
+            android:id="@+id/rv_order_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ListView
+                android:id="@+id/lv_order_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></ListView>
+        </studio.opencloud.easytour21.View.RefreshableView>
+
+
+    </LinearLayout>
+
+</LinearLayout>

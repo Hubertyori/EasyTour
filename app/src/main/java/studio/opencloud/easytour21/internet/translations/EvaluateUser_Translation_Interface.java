@@ -3,7 +3,6 @@ package studio.opencloud.easytour21.internet.translations;
 import java.util.List;
 
 import studio.opencloud.easytour21.internet.datas.EvaluateUserInfoData;
-import studio.opencloud.easytour21.internet.datas.GuideOrderData;
 
 public class EvaluateUser_Translation_Interface {
     //评价用户界面
